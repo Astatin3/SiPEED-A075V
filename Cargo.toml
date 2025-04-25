@@ -1,0 +1,11 @@
+[package]
+name = "SiPEED-A075V"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+byteorder = "1.5.0"
+ndarray = "0.16.1"
+once_cell = "1.21.3"
+opencv = "0.94.4"
+reqwest = { version = "0.12.15", features = ["blocking"] }
