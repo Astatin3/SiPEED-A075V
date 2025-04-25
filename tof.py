@@ -5,188 +5,22 @@ import cv2
 #import matplotlib.pyplot as plt
 import requests
 
-import open3d as o3d
+from depth import img2depth
+from matchdepth import align_depth_maps
+
+# import open3d as o3d
 
 HOST = '192.168.233.1'
 PORT = 80
 
-# def create_point_cloud_map(width, height, fx, fy, cx, cy):
-#     """
-#     Create mapping arrays for converting depth image to point cloud.
-    
-#     Args:
-#         width, height: Image dimensions
-#         fx, fy: Focal lengths
-#         cx, cy: Principal point coordinates
-    
-#     Returns:
-#         x_map, y_map: Arrays that when multiplied by depth give X,Y coordinates
-#     """
-#     # Create pixel coordinate grid
-#     v, u = np.meshgrid(np.arange(height), np.arange(width), indexing='ij')
-    
-#     # Convert to normalized image coordinates
-#     x_map = (u - cx) / fx
-#     y_map = (v - cy) / fy
-    
-#     return x_map, y_map
-
-# def depth_to_points(depth_image, x_map, y_map):
-#     """
-#     Convert depth image to point cloud using pre-computed maps.
-    
-#     Args:
-#         depth_image: 2D depth array
-#         x_map, y_map: Pre-computed coordinate maps
-    
-#     Returns:
-#         points: Nx3 array of XYZ coordinates
-#     """
-#     # Calculate X and Y coordinates
-#     X = depth_image * x_map
-#     Y = depth_image * y_map
-    
-#     # Stack coordinates into point cloud
-#     valid_points = depth_image > 0
-#     points = np.stack((
-#         X[valid_points],
-#         Y[valid_points],
-#         depth_image[valid_points]
-#     ), axis=-1)
-    
-#     return points
-
-
-
-
-
-def create_point_cloud_map(width, height, fx, fy, cx, cy):
-    """
-    Create mapping arrays for converting depth image to point cloud.
-    
-    Args:
-        width, height: Image dimensions
-        fx, fy: Focal lengths
-        cx, cy: Principal point coordinates
-    
-    Returns:
-        x_map, y_map: Arrays that when multiplied by depth give X,Y coordinates
-    """
-    # Create pixel coordinate grid
-    v, u = np.meshgrid(np.arange(height), np.arange(width), indexing='ij')
-    
-    # Convert to normalized image coordinates
-    x_map = (u - cx) / fx
-    y_map = (v - cy) / fy
-    
-    return x_map, y_map
-
-def transform_points(points, translation, rotation=None):
-    """
-    Apply rigid transformation to points.
-    
-    Args:
-        points: Nx3 array of XYZ coordinates
-        translation: [tx, ty, tz] translation vector
-        rotation: 3x3 rotation matrix (optional)
-    
-    Returns:
-        transformed_points: Nx3 array of transformed coordinates
-    """
-    if rotation is not None:
-        points = points @ rotation.T
-    return points + translation
-
-def depth_to_colored_points(depth_image, color_image, x_map, y_map, 
-                          color_intrinsics, depth_to_color_translation,
-                          depth_to_color_rotation=None):
-    """
-    Convert depth image to colored point cloud using pre-computed maps.
-    
-    Args:
-        depth_image: 2D depth array
-        color_image: RGB image array (height, width, 3)
-        x_map, y_map: Pre-computed coordinate maps for depth camera
-        color_intrinsics: (fx, fy, cx, cy) for RGB camera
-        depth_to_color_translation: [tx, ty, tz] from depth to color camera
-        depth_to_color_rotation: 3x3 rotation matrix (optional)
-    
-    Returns:
-        points: Nx3 array of XYZ coordinates
-        colors: Nx3 array of RGB values
-    """
-    # Calculate initial point cloud from depth
-    valid_points = depth_image > 0
-    X = depth_image * x_map
-    Y = depth_image * y_map
-    
-    points = np.stack((
-        X[valid_points],
-        Y[valid_points],
-        depth_image[valid_points]
-    ), axis=-1)
-    
-    # Transform points to color camera coordinate system
-    transformed_points = transform_points(
-        points, 
-        depth_to_color_translation,
-        depth_to_color_rotation
-    )
-    
-    # Project points into color image
-    fx, fy, cx, cy = color_intrinsics
-    u = (transformed_points[:, 0] * fx / transformed_points[:, 2] + cx).astype(int)
-    v = (transformed_points[:, 1] * fy / transformed_points[:, 2] + cy).astype(int)
-    
-    # Filter points that project outside image bounds
-    height, width = color_image.shape[:2]
-    valid_uvs = (u >= 0) & (u < width) & (v >= 0) & (v < height)
-    
-    # Sample colors from valid projections
-    colors = np.zeros((len(points), 3), dtype=np.uint8)
-    colors[valid_uvs] = color_image[v[valid_uvs], u[valid_uvs]]
-    
-    return points[valid_uvs], colors[valid_uvs]
-
-def depth_to_points(depth_image, x_map, y_map):
-    """
-    Convert depth image to point cloud using pre-computed maps.
-    
-    Args:
-        depth_image: 2D depth array
-        x_map, y_map: Pre-computed coordinate maps
-    
-    Returns:
-        points: Nx3 array of XYZ coordinates
-    """
-    # Calculate X and Y coordinates
-    X = depth_image * x_map
-    Y = depth_image * y_map
-    
-    # Stack coordinates into point cloud
-    valid_points = depth_image > 0
-    points = np.stack((
-        X[valid_points],
-        Y[valid_points],
-        depth_image[valid_points]
-    ), axis=-1)
-    
-    return points
-
-
-
-
-
-
-
 def get_frame_from_http(host=HOST, port=PORT):
     r = requests.get('http://{}:{}/getdeep'.format(host, port))
     if(r.status_code == requests.codes.ok):
-        print('Get deep image')
+        # print('Get deep image')
         deepimg = r.content
-        print('Length={}'.format(len(deepimg)))
+        # print('Length={}'.format(len(deepimg)))
         (frameid, stamp_msec) = struct.unpack('<QQ', deepimg[0:8+8])
-        print((frameid, stamp_msec/1000))
+        # print((frameid, stamp_msec/1000))
         return deepimg
 
 def post_encode_config(config, host=HOST, port=PORT):
@@ -267,10 +101,76 @@ def frame_payload_decode(frame_data: bytes, with_config: tuple):
 
     return (deepth_img, ir_img, status_img, rgb_img)
 
+
+
+
+
+
+def scale_and_shift(image, scale_factor, shift_x, shift_y):
+    """
+    Scale an RGB image and shift it by n pixels in x and y direction.
+    
+    Parameters:
+    -----------
+    image : numpy.ndarray
+        Input RGB image with shape (height, width, 3)
+    scale_factor : float
+        Scale factor (e.g., 0.5 for half size, 2.0 for double size)
+    shift_x : int
+        Number of pixels to shift in x direction (positive: right, negative: left)
+    shift_y : int
+        Number of pixels to shift in y direction (positive: down, negative: up)
+    
+    Returns:
+    --------
+    numpy.ndarray
+        Scaled and shifted image with the same shape as the input image
+    """
+    # Get original image dimensions
+    height, width = image.shape[:2]
+    
+    # Calculate new dimensions after scaling
+    new_height = int(height * scale_factor)
+    new_width = int(width * scale_factor)
+    
+    # Scale the image
+    scaled_image = cv2.resize(image, (new_width, new_height), interpolation=cv2.INTER_LINEAR)
+    
+    # Create a transformation matrix for the shift
+    M = np.float32([[1, 0, shift_x], [0, 1, shift_y]])
+    
+    # Apply the shift to the scaled image
+    shifted_image = cv2.warpAffine(scaled_image, M, (new_width, new_height))
+    
+    # Create a blank canvas with original dimensions
+    result = np.zeros_like(image)
+    
+    # Calculate the region to copy from the shifted_scaled image
+    y_start = max(0, -shift_y)
+    y_end = min(new_height, height - shift_y)
+    x_start = max(0, -shift_x)
+    x_end = min(new_width, width - shift_x)
+    
+    # Calculate the region to paste into the result image
+    result_y_start = max(0, shift_y)
+    result_y_end = min(height, new_height + shift_y)
+    result_x_start = max(0, shift_x)
+    result_x_end = min(width, new_width + shift_x)
+    
+    # Copy the visible part of the shifted image to the result
+    if (y_end > y_start and x_end > x_start and 
+        result_y_end > result_y_start and result_x_end > result_x_start):
+        result[result_y_start:result_y_end, result_x_start:result_x_end] = shifted_image[y_start:y_end, x_start:x_end]
+    
+    return result
+
+
 prev_status = None
+prev_depth = None
 
 def show_frame(frame_data: bytes):
     global prev_status
+    global prev_depth
     config = frame_config_decode(frame_data[16:16+12])
     frame_bytes = frame_payload_decode(frame_data[16+12:], config)
 
@@ -287,76 +187,76 @@ def show_frame(frame_data: bytes):
         (480, 640, 3) if config[6] == 1 else (600, 800, 3)) if frame_bytes[3] else None
 
     if not (depth is None or status is None or rgb is None):
+        rgb = cv2.resize(rgb, dsize=(320, 240), interpolation=cv2.INTER_CUBIC) # Resize
+        rgb = scale_and_shift(rgb, 1.1, -10, -10)
+        status = 1-status
+
         if prev_status is None:
-            mask = (status==0)
+            mask = (status)
         else:
-            mask = (status==0)*(prev_status==0)
-        
-        linear_mask = mask.reshape((-1))
-        # delete = np.where(1-linear_mask))
-
-        # depth_frame = (depth*mask)/1000
-        depth_frame = (depth)/1000
-        blurred = cv2.GaussianBlur(depth_frame,(3,3),1.0)
-        # depth_frame = cv2.addWeighted(depth_frame, 2.5, blurred, -1, 0)
-
+            mask = (status)*(prev_status)
         prev_status = status
-        points = depth_to_points(depth_frame, x_map, y_map)
-        points = points[linear_mask]
 
-        colors = cv2.resize(rgb, (320, 240))
-        # cv2.imshow("color", mask)
+        depth = depth*mask
+        if prev_depth is not None:
+            new_depth = (depth + prev_depth)/2
+            prev_depth = depth
+            depth = new_depth
+        else:
+            prev_depth = depth
 
-         
-        
-        # colors = (np.stack((depth_frame,) * 3, axis=-1)).reshape((-1, 3)).astype(np.float64) / 255.0
-        colors = colors.reshape((-1, 3)).astype(np.float64) / 255.0
-        # colors *= linear_mask
-        # colors = colors[:-(colors.shape[0]-points.shape[0])]
-        # colors = np.delete(colors, delete, axis = 0)
-        colors = colors[linear_mask]
 
-        # print(np.where(points))
+        img_depth = img2depth(rgb)
 
-        # print(colors_e.shape)
-
+        aligned_img_depth = align_depth_maps(depth, img_depth, mask)*(1-mask)
 
         
-        return depth_frame, points, colors
-    return None, None, None
+        return (aligned_img_depth + depth), rgb, mask
+    return None
 
 
 # create visualizer and window.
-vis = o3d.visualization.Visualizer()
-vis.create_window(height=480, width=640)
+# vis = o3d.visualization.Visualizer()
+# vis.create_window(height=480, width=640)
 
-pcd = o3d.geometry.PointCloud()
-pcd.points = o3d.utility.Vector3dVector(np.random.rand(10, 3))
+# pcd = o3d.geometry.PointCloud()
+# pcd.points = o3d.utility.Vector3dVector(np.random.rand(10, 3))
 
-vis.add_geometry(pcd)
-
-x_map, y_map = create_point_cloud_map(
-    width=320, height=240,
-    fx=231.8290, fy=232.7785,  # focal lengths
-    cx=166.9372, cy=123.5151   # principal point
-)
+# vis.add_geometry(pcd)
 
 
-depth_to_color_translation = np.array([0, 0, 0])  # 5cm offset in x
-depth_to_color_rotation = np.eye(3)  # Identity matrix if cameras are parallel
+# depth_to_color_translation = np.array([0, 0, 0])  # 5cm offset in x
+# depth_to_color_rotation = np.eye(3)  # Identity matrix if cameras are parallel
 
-color_intrinsics = (520, 520, 325, 245)
+# color_intrinsics = (520, 520, 325, 245)
 
 keep_running = True
+
+photocount = 0
 
 while keep_running:
     if post_encode_config(frame_config_encode(1,0,255,0,2,7,1,0,0)):
         p = get_frame_from_http()
-        depth_image, points, colors = show_frame(p)
-        if depth_image is None or colors is None : continue
-        cv2.imshow("e", depth_image)
-        cv2.waitKey(1)
+        depth_image, rgb, mask = show_frame(p)
+        if depth_image is None: continue
+        depth_colored = cv2.applyColorMap((depth_image).astype(np.uint8), cv2.COLORMAP_JET)
 
+        # mask = (depth_image>1000)
+
+        # b = np.repeat((depth_image>10)[:, :, np.newaxis], 3, axis=2)
+        # b = np.repeat((mask==1)[:, :, np.newaxis], 3, axis=2)
+
+
+        cv2.imshow("e", depth_colored)
+        cv2.imshow("rgb", rgb)
+
+    key = cv2.waitKey(1)
+
+    if key & 0xFF == 27:
+        break
+    if key & 0xFF == 32:
+        photocount += 1
+        print(f"Took photo {photocount}!")
         # points, colors = depth_to_colored_points(
         #     depth_image,
         #     color_image,
@@ -373,20 +273,21 @@ while keep_running:
 
         # colors[:, [0, 2]] = colors[:, [2, 0]]
 
-        print(points.shape)
-        print(colors.shape)
+        # print(points.shape)
+        # print(colors.shape)
 
-        pcd.points = o3d.utility.Vector3dVector(points)
-        pcd.colors = o3d.utility.Vector3dVector(colors)
+        # pcd.points = o3d.utility.Vector3dVector(points)
+        # pcd.colors = o3d.utility.Vector3dVector(colors)
 
 
-    vis.update_geometry(pcd)
+    # vis.update_geometry(pcd)
 
-    keep_running = vis.poll_events()
-    vis.update_renderer()
+    # keep_running = vis.poll_events()
+    # vis.update_renderer()
 
         # pcd.points.extend(np.random.rand(n_new, 3))
     # cv2.waitKey(1)
     # with open("rgbd.raw", 'wb') as f:
     #     f.write(p)
     #     f.flush()
+cv2.destroyAllWindows()
