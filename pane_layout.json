@@ -1,0 +1,31 @@
+[
+  {
+    "pane": {
+      "type": "PointRendererPane"
+    },
+    "id": "Point Cloud",
+    "mode": "Hidden"
+  },
+  {
+    "pane": {
+      "type": "PipelinePane",
+      "snarl": {
+        "nodes": {},
+        "wires": []
+      },
+      "style": {
+        "select_rect_contained": null
+      },
+      "snarl_ui_id": null
+    },
+    "id": "Pipeline Pane",
+    "mode": "Hidden"
+  },
+  {
+    "pane": {
+      "type": "CameraPane"
+    },
+    "id": "Raw Camera",
+    "mode": "Hidden"
+  }
+]
