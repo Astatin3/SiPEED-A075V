@@ -2,12 +2,6 @@ use eframe::egui_glow;
 use egui::{Color32, InputState, Rect};
 use egui_glow::glow;
 use glam::{Mat4, Quat, Vec3};
-use pasture_core::containers::{
-    BorrowedBuffer, BorrowedBufferExt, InterleavedBufferMut, VectorBuffer,
-};
-use pasture_core::layout::attributes::{COLOR_RGB, POSITION_3D};
-use pasture_core::nalgebra::Vector3;
-use pasture_io::base::read_all;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 use std::sync::Arc;
@@ -471,60 +465,33 @@ impl PointRenderer {
             .title("File Selection")
             // .path("/home/user/Downloads")
             .show()
-            .expect("Could not display dialog box");
-
-        let mut points = read_all::<VectorBuffer, _>("pointcloud.las")?;
-
-        let loaded_points: Vec<(i32, i32, i32, Color32)> = Vec::with_capacity(points.len());
-
-        let has_pos = points.point_layout().has_attribute(&POSITION_3D);
-        let has_color = points.point_layout().has_attribute(&COLOR_RGB);
-
-        if has_pos {
-            for position in points
-                .view_attribute::<Vector3<f64>>(&POSITION_3D)
-                .into_iter()
-                .take(10)
-            {
-                info!("({};{};{})", position.x, position.y, position.z);
-            }
-        }
-
-        if has_color {
-            for i in 0..points.len() {
-                let point = points.get_point_mut(i);
-
-                warn!("{:?}", point);
-
-                // println!("({};{};{})", color.x, position.y, position.z);
-            }
-        }
-
-        Err("".into())
+            .expect("Could not display dialog box")
+            .expect("Could not select file");
 
         // let file = File::open(path).map_err(|e| format!("Failed to open file: {}", e))?;
-        // let reader = BufReader::new(file);
-        // let mut lines = reader.lines();
+        let file = File::open(choice)?;
+        let reader = BufReader::new(file);
+        let mut lines = reader.lines();
 
-        // // Parse header
-        // let header = Self::parse_ply_header(&mut lines)?;
+        // Parse header
+        let header = Self::parse_ply_header(&mut lines)?;
 
-        // // Clear existing points
-        // self.clear();
+        // Clear existing points
+        self.clear();
 
-        // // Reserve capacity
-        // self.points
-        //     .as_mut()
-        //     .as_mut()
-        //     .expect("Not Initialised")
-        //     .reserve(header.vertex_count * 7);
+        // Reserve capacity
+        self.points
+            .as_mut()
+            .as_mut()
+            .expect("Not Initialised")
+            .reserve(header.vertex_count * 7);
 
-        // // Parse vertices based on format
-        // if header.is_binary {
-        //     return Err("Binary PLY files not yet supported".to_string());
-        // } else {
-        //     self.parse_ascii_ply_data(lines, header)
-        // }
+        // Parse vertices based on format
+        if header.is_binary {
+            return Err("Binary PLY files not yet supported".into());
+        } else {
+            self.parse_ascii_ply_data(lines, header)
+        }
     }
 
     fn parse_ply_header<B: BufRead>(lines: &mut std::io::Lines<B>) -> Result<PlyHeader, String> {
@@ -569,54 +536,54 @@ impl PointRenderer {
         })
     }
 
-    // fn parse_ascii_ply_data<B: BufRead>(
-    //     &mut self,
-    //     lines: std::io::Lines<B>,
-    //     header: PlyHeader,
-    // ) -> Result<Vec<(i32, i32, i32, Color32)>, String> {
-    //     let mut vec: Vec<(i32, i32, i32, Color32)> = Vec::new();
+    fn parse_ascii_ply_data<B: BufRead>(
+        &mut self,
+        lines: std::io::Lines<B>,
+        header: PlyHeader,
+    ) -> Result<Vec<(i32, i32, i32, Color32)>, Box<dyn std::error::Error>> {
+        let mut vec: Vec<(i32, i32, i32, Color32)> = Vec::new();
 
-    //     for line in lines.take(header.vertex_count) {
-    //         let line = line.map_err(|e| format!("Failed to read line: {}", e))?;
-    //         let parts: Vec<&str> = line.split_whitespace().collect();
+        for line in lines.take(header.vertex_count) {
+            let line = line.map_err(|e| format!("Failed to read line: {}", e))?;
+            let parts: Vec<&str> = line.split_whitespace().collect();
 
-    //         if parts.len() < 3 {
-    //             return Err("Invalid vertex data".to_string());
-    //         }
+            if parts.len() < 3 {
+                return Err("Invalid vertex data".into());
+            }
 
-    //         // Parse position
-    //         let x = parts[0]
-    //             .parse::<f32>()
-    //             .map_err(|_| "Invalid X coordinate")?;
-    //         let y = parts[1]
-    //             .parse::<f32>()
-    //             .map_err(|_| "Invalid Y coordinate")?;
-    //         let z = parts[2]
-    //             .parse::<f32>()
-    //             .map_err(|_| "Invalid Z coordinate")?;
+            // Parse position
+            let x = parts[0]
+                .parse::<f32>()
+                .map_err(|_| "Invalid X coordinate")?;
+            let y = parts[1]
+                .parse::<f32>()
+                .map_err(|_| "Invalid Y coordinate")?;
+            let z = parts[2]
+                .parse::<f32>()
+                .map_err(|_| "Invalid Z coordinate")?;
 
-    //         // Convert to fixed point (scale by 1000 for better precision)
-    //         let x = (x * 1000.0) as i32;
-    //         let y = (y * 1000.0) as i32;
-    //         let z = (z * 1000.0) as i32;
+            // Convert to fixed point (scale by 1000 for better precision)
+            let x = (x * 1000.0) as i32;
+            let y = (y * 1000.0) as i32;
+            let z = (z * 1000.0) as i32;
 
-    //         // Parse colors if present
-    //         let color = if header.has_colors && parts.len() >= 6 {
-    //             let r = parts[3].parse::<u8>().unwrap_or(255);
-    //             let g = parts[4].parse::<u8>().unwrap_or(255);
-    //             let b = parts[5].parse::<u8>().unwrap_or(255);
-    //             Color32::from_rgb(r, g, b)
-    //         } else {
-    //             Color32::WHITE
-    //         };
+            // Parse colors if present
+            let color = if header.has_colors && parts.len() >= 6 {
+                let r = parts[3].parse::<u8>().unwrap_or(255);
+                let g = parts[4].parse::<u8>().unwrap_or(255);
+                let b = parts[5].parse::<u8>().unwrap_or(255);
+                Color32::from_rgb(r, g, b)
+            } else {
+                Color32::WHITE
+            };
 
-    //         vec.push((x, y, z, color));
+            vec.push((x, y, z, color));
 
-    //         // self.add_point(x, y, z, color);
-    //     }
+            // self.add_point(x, y, z, color);
+        }
 
-    //     Ok(vec)
-    // }
+        Ok(vec)
+    }
 }
 
 impl Drop for PointRenderer {

@@ -44,12 +44,9 @@ impl eframe::App for App {
     fn update(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
         egui::CentralPanel::default().show(ctx, |ui| {
             self.pane_manager.render(ui);
-            // egui::scroll_area::ScrollArea::vertical().show(ui, |ui| {
-            // egui::Frame::canvas(ui.style()).show(ui, |ui| {
-            //     self.custom_painting(ui.max_rect(), ui);
-            // });
-            // })
         });
+
+        ctx.request_repaint();
     }
 
     // fn on_exit(&mut self, gl: Option<&glow::Context>) {

@@ -39,7 +39,7 @@ impl Pane for PointRendererPane {
         }
     }
     fn init(&mut self, pcc: &PsudoCreationContext) {
-        self.renderer.lock().init(pcc.gl.clone(), 1_000_000);
+        self.renderer.lock().init(pcc.gl.clone(), 100_000);
     }
     fn name(&mut self) -> &str {
         "Point Cloud"
@@ -101,7 +101,7 @@ impl Pane for PointRendererPane {
 
         if self.points.is_empty() {
             let radius = 1000i32;
-            for i in 0..100000 {
+            for i in 0..100_000 {
                 //    let theta = (i as f32 * 0.1).sin() * std::f32::consts::PI;
                 //    let phi = (i as f32 * 0.1).cos() * std::f32::consts::PI;
 

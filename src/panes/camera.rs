@@ -10,11 +10,12 @@ use std::{
 use std::io::Cursor;
 
 use byteorder::{LittleEndian, ReadBytesExt};
-use egui::{Ui, mutex::Mutex};
+use egui::{Color32, Ui, mutex::Mutex};
 
 use crate::{
     fetch_frame::{FrameMessage, ProcessedFrames, decode_frame, frame_config_encode, normalize},
     pane_manager::{Pane, PaneMode, PaneState, PsudoCreationContext},
+    panes::point_cloud_renderer::LivePointView,
 };
 
 // Constants (replace with your actual values)
@@ -27,6 +28,8 @@ pub struct CameraPane {
     frames: Arc<Mutex<ProcessedFrames>>,
     #[serde(skip)]
     thread_handle: Option<thread::JoinHandle<()>>,
+    #[serde(skip)]
+    point_cloud: LivePointView,
 }
 
 impl Default for CameraPane {
@@ -52,6 +55,7 @@ impl Default for CameraPane {
         Self {
             frames,
             thread_handle: Some(decoder_handle),
+            point_cloud: LivePointView::default(),
         }
     }
 }
@@ -68,6 +72,7 @@ impl Pane for CameraPane {
     }
 
     fn init(&mut self, pcc: &PsudoCreationContext) {
+        self.point_cloud.init(pcc);
         // decoder_thread(rx, tx);
 
         // let mut frames_lock = self.frames.lock();
@@ -123,9 +128,84 @@ impl Pane for CameraPane {
         if !processed {
             ui.heading("Waiting for frames...");
         }
+
+        if let Some(ref status) = frames.status {
+            if let Some(ref depth) = frames.depth {
+                if let Some(ref rgb) = frames.rgb {
+                    let mut points: Vec<(i32, i32, i32, Color32)> = Vec::new();
+
+                    for i in 0..(320 * 240) {
+                        let x = i / 240;
+                        let y = i % 320;
+
+                        // println!("{:?}", status.get((x, y)));
+
+                        let status = status.get((x, y));
+
+                        if status.is_none() {
+                            continue;
+                        }
+
+                        let status = *status.unwrap();
+
+                        if status != 0 {
+                            continue;
+                        }
+
+                        // if *status.get((x, y)).unwrap() != 0u16 {
+                        //     continue;
+                        // }
+                        //
+
+                        let (r, g, b) = if let Some((rgbx, rgby)) = scale_shift_rgb_xy(x, y) {
+                            (
+                                *rgb.get((rgbx, rgby, 0)).unwrap() as u8,
+                                *rgb.get((rgbx, rgby, 1)).unwrap() as u8,
+                                *rgb.get((rgbx, rgby, 2)).unwrap() as u8,
+                            )
+                        } else {
+                            (255, 255, 255)
+                        };
+
+                        let d = *depth.get((x, y)).unwrap();
+
+                        points.push((
+                            (y as i32) * 5,
+                            (x as i32) * 5,
+                            d as i32,
+                            Color32::from_rgb(r, g, b),
+                        ))
+                    }
+
+                    self.point_cloud.set_points(points);
+                }
+            }
+        }
+
+        self.point_cloud.render(ui);
     }
 
     fn context_menu(&mut self, ui: &mut Ui) {}
+}
+
+fn scale_shift_rgb_xy(x: usize, y: usize) -> Option<(usize, usize)> {
+    static X_OFFSET: f32 = -10.;
+    static Y_OFFSET: f32 = -10.;
+    static SCAME: f32 = 1.9;
+
+    let x = ((x as f32 + X_OFFSET) * SCAME) as usize;
+    let y = ((y as f32 + Y_OFFSET) * SCAME) as usize;
+
+    if x < 0 || y >= 640 {
+        return None;
+    }
+    if y < 0 || x >= 480 {
+        return None;
+    }
+
+    // println!("{}, {}", x, y);
+
+    Some((x as usize, y as usize))
 }
 
 fn fetch_frame() -> Result<Vec<u8>, Box<dyn std::error::Error>> {
