@@ -1,0 +1,1000 @@
+'
+
+echo __OC_SECTION_available_modules_nosort__; find /lib/modules -type
+ f -name "*.ko" -print 2>/dev/null; find /lib/modules -type f ! -name "*.ko" -pr
+int 2>/dev/null; echo __OC_END_available_modules_nosort__
+__OC_SECTION_available_modules_nosort__
+/lib/modules/4.9.118/8189fs.ko
+/lib/modules/4.9.118/8723ds.ko
+/lib/modules/4.9.118/atm.ko
+/lib/modules/4.9.118/bl_fdrv.ko
+/lib/modules/4.9.118/br2684.ko
+/lib/modules/4.9.118/ecb.ko
+/lib/modules/4.9.118/gc2093_mipi.ko
+/lib/modules/4.9.118/gc2145.ko
+/lib/modules/4.9.118/goodix.ko
+/lib/modules/4.9.118/gre.ko
+/lib/modules/4.9.118/ip6_udp_tunnel.ko
+/lib/modules/4.9.118/ip_gre.ko
+/lib/modules/4.9.118/ip_tunnel.ko
+/lib/modules/4.9.118/irs2381c_mipi.ko
+/lib/modules/4.9.118/l2tp_core.ko
+/lib/modules/4.9.118/l2tp_netlink.ko
+/lib/modules/4.9.118/l2tp_ppp.ko
+/lib/modules/4.9.118/nls_utf8.ko
+/lib/modules/4.9.118/opn87xx_mipi.ko
+/lib/modules/4.9.118/ov7251_mipi.ko
+/lib/modules/4.9.118/ov9732_mipi.ko
+/lib/modules/4.9.118/ppp_mppe.ko
+/lib/modules/4.9.118/pppoatm.ko
+/lib/modules/4.9.118/pppoe.ko
+/lib/modules/4.9.118/pppox.ko
+/lib/modules/4.9.118/pptp.ko
+/lib/modules/4.9.118/rndis_host.ko
+/lib/modules/4.9.118/sensor_power.ko
+/lib/modules/4.9.118/sp2305_mipi.ko
+/lib/modules/4.9.118/udp_tunnel.ko
+/lib/modules/4.9.118/videobuf2-dma-contig.ko
+/lib/modules/4.9.118/vin_io.ko
+/lib/modules/4.9.118/vin_v4l2.ko
+/lib/modules/4.9.118/xhci-hcd.ko
+/lib/modules/4.9.118/xhci-plat-hcd.ko
+__OC_END_available_modules_nosort__
+
+echo __OC_SECTION_module_metadata__; for m in /lib/modules/4.9.118/*.
+ko /lib/modules/4.9.118/*/*.ko; do [ -e "$m" ] || continue; echo "### $m"; modin
+fo "$m" 2>/dev/null || strings "$m" | grep -E "^(description=|author=|license=|a
+lias=|depends=|vermagic=|name=|parm=)"; done; echo __OC_END_module_metadata__
+__OC_SECTION_module_metadata__
+### /lib/modules/4.9.118/8189fs.ko
+echo __OC_SECTION_dev_all__; ls -l /dev 2>/dev/null; echo __OC_END_dev_all__
+module:		/lib/modules/4.9.118/8189fs.ko
+version:	v5.3.12_28613.20180703
+author:		Realtek Semiconductor Corp.
+description:	Realtek Wireless Lan Driver
+license:	GPL
+srcversion:	F5473AC927885B299C1ED09
+alias:		sdio:c*v024CdF179*
+depends:	
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/8723ds.ko
+module:		/lib/modules/4.9.118/8723ds.ko
+version:	v5.6.5_31752.20181221_COEX20181130-2e2e
+author:		Realtek Semiconductor Corp.
+description:	Realtek Wireless Lan Driver
+license:	GPL
+srcversion:	4C35C5F1AA615C2389698DA
+alias:		sdio:c*v024CdD724*
+alias:		sdio:c*v024CdD723*
+depends:	
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/atm.ko
+module:		/lib/modules/4.9.118/atm.ko
+alias:		net-pf-20
+alias:		net-pf-8
+license:	GPL
+depends:	
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/bl_fdrv.ko
+module:		/lib/modules/4.9.118/bl_fdrv.ko
+license:	GPL
+author:		Copyright(c) 2015-2021 BouffaloLab BouffaloLab S.A.S
+version:	105
+description:	BouffaloLab 11n driver for Linux cfg80211
+firmware:	bl_settings.ini
+firmware:	fmacfw.bin
+firmware:	ldpcram.bin
+firmware:	fcuram.bin
+firmware:	agcram.bin
+alias:		xradio_wlan
+license:	GPL
+description:	XRadioTech WLAN driver
+author:		XRadioTech
+srcversion:	2A1941D508567A4FB43D01A
+alias:		sdio:c*v424Cd0606*
+depends:	
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/br2684.ko
+module:		/lib/modules/4.9.118/br2684.ko
+license:	GPL
+description:	RFC2684 bridged protocols over ATM/AAL5
+author:		Marcell GAL
+depends:	atm
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/ecb.ko
+module:		/lib/modules/4.9.118/ecb.ko
+alias:		crypto-ecb
+alias:		ecb
+description:	ECB block cipher algorithm
+license:	GPL
+depends:	
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/gc2093_mipi.ko
+module:		/lib/modules/4.9.118/gc2093_mipi.ko
+license:	GPL
+description:	A low-level driver for GC2093sensors
+author:		zhj
+alias:		i2c:gc2093_mipi
+alias:		i2c:gc2093_mipi_2
+depends:	vin_io
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/gc2145.ko
+module:		/lib/modules/4.9.118/gc2145.ko
+license:	GPL
+description:	A low-level driver for GalaxyCore gc2145 sensors
+author:		raymonxiu
+alias:		i2c:gc2145
+depends:	vin_io
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/goodix.ko
+module:		/lib/modules/4.9.118/goodix.ko
+license:	GPL v2
+description:	Goodix touchscreen driver
+author:		Bastien Nocera <hadess@hadess.net>
+author:		Benjamin Tissoires <benjamin.tissoires@gmail.com>
+alias:		i2c:GDIX1001:00
+alias:		of:N*T*Cgoodix,gt967C*
+alias:		of:N*T*Cgoodix,gt967
+alias:		of:N*T*Cgoodix,gt928C*
+alias:		of:N*T*Cgoodix,gt928
+alias:		of:N*T*Cgoodix,gt9271C*
+alias:		of:N*T*Cgoodix,gt9271
+alias:		of:N*T*Cgoodix,gt927C*
+alias:		of:N*T*Cgoodix,gt927
+alias:		of:N*T*Cgoodix,gt912C*
+alias:		of:N*T*Cgoodix,gt912
+alias:		of:N*T*Cgoodix,gt9110C*
+alias:		of:N*T*Cgoodix,gt9110
+alias:		of:N*T*Cgoodix,gt911C*
+alias:		of:N*T*Cgoodix,gt911
+depends:	
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/gre.ko
+module:		/lib/modules/4.9.118/gre.ko
+license:	GPL
+author:		D. Kozlov (xeb@mail.ru)
+description:	GRE over IPv4 demultiplexer driver
+depends:	
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/ip6_udp_tunnel.ko
+module:		/lib/modules/4.9.118/ip6_udp_tunnel.ko
+license:	GPL
+depends:	
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/ip_gre.ko
+module:		/lib/modules/4.9.118/ip_gre.ko
+alias:		netdev-gretap0
+alias:		netdev-gre0
+alias:		rtnl-link-gretap
+alias:		rtnl-link-gre
+license:	GPL
+depends:	ip_tunnel,gre
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/ip_tunnel.ko
+module:		/lib/modules/4.9.118/ip_tunnel.ko
+license:	GPL
+depends:	
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+6ip_tunnel: non-ECT from %pI4 with TOS:	%#x
+
+### /lib/modules/4.9.118/irs2381c_mipi.ko
+module:		/lib/modules/4.9.118/irs2381c_mipi.ko
+license:	GPL
+description:	A low-level driver for irs2381c tof sensors
+author:		lwj
+alias:		i2c:irs2381c_mipi
+depends:	vin_io
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/l2tp_core.ko
+module:		/lib/modules/4.9.118/l2tp_core.ko
+version:	V2.0
+license:	GPL
+description:	L2TP core
+author:		James Chapman <jchapman@katalix.com>
+srcversion:	B8F374159323FDC0F101312
+depends:	udp_tunnel,ip6_udp_tunnel
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/l2tp_netlink.ko
+module:		/lib/modules/4.9.118/l2tp_netlink.ko
+alias:		net-pf-16-proto-16-family-l2tp
+version:	1.0
+license:	GPL
+description:	L2TP netlink
+author:		James Chapman <jchapman@katalix.com>
+srcversion:	CA62857194D445D7D167CFC
+depends:	l2tp_core
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/l2tp_ppp.ko
+module:		/lib/modules/4.9.118/l2tp_ppp.ko
+alias:		net-l2tp-type-7
+alias:		net-pf-24-proto-1
+version:	V2.0
+license:	GPL
+description:	PPP over L2TP over UDP
+author:		James Chapman <jchapman@katalix.com>
+srcversion:	CFA5454D2B64F45845A80AE
+depends:	l2tp_core,pppox,l2tp_netlink
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/nls_utf8.ko
+module:		/lib/modules/4.9.118/nls_utf8.ko
+license:	Dual BSD/GPL
+depends:	
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/opn87xx_mipi.ko
+module:		/lib/modules/4.9.118/opn87xx_mipi.ko
+license:	GPL
+description:	A low-level driver for opn87xx tof sensors
+author:		lwj
+alias:		i2c:opn87xx_mipi
+depends:	vin_io
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/ov7251_mipi.ko
+module:		/lib/modules/4.9.118/ov7251_mipi.ko
+license:	GPL
+description:	A low-level driver for ov7251 sensors
+author:		lwj
+alias:		i2c:ov7251_mipi
+depends:	vin_io
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/ov9732_mipi.ko
+module:		/lib/modules/4.9.118/ov9732_mipi.ko
+license:	GPL
+description:	A low-level driver for ov9732 sensors
+author:		dls
+alias:		i2c:ov9732_mipi
+depends:	vin_io
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/ppp_mppe.ko
+module:		/lib/modules/4.9.118/ppp_mppe.ko
+version:	1.0.2
+alias:		ppp-compress-18
+license:	Dual BSD/GPL
+description:	Point-to-Point Protocol Microsoft Point-to-Point Encryption support
+author:		Frank Cusack <fcusack@fcusack.com>
+srcversion:	FC1AFC8C392517AA166FDEE
+depends:	
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/pppoatm.ko
+module:		/lib/modules/4.9.118/pppoatm.ko
+license:	GPL
+description:	RFC2364 PPP over ATM/AAL5
+author:		Mitchell Blank Jr <mitch@sfgoth.com>
+depends:	atm
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/pppoe.ko
+module:		/lib/modules/4.9.118/pppoe.ko
+alias:		net-pf-24-proto-0
+license:	GPL
+description:	PPP over Ethernet driver
+author:		Michal Ostrowski <mostrows@speakeasy.net>
+depends:	pppox
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/pppox.ko
+module:		/lib/modules/4.9.118/pppox.ko
+alias:		net-pf-24
+license:	GPL
+description:	PPP over Ethernet driver (generic socket layer)
+author:		Michal Ostrowski <mostrows@speakeasy.net>
+depends:	
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/pptp.ko
+module:		/lib/modules/4.9.118/pptp.ko
+alias:		net-pf-24-proto-2
+license:	GPL
+author:		D. Kozlov (xeb@mail.ru)
+description:	Point-to-Point Tunneling Protocol
+depends:	pppox,gre
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/rndis_host.ko
+module:		/lib/modules/4.9.118/rndis_host.ko
+license:	GPL
+description:	USB Host side RNDIS driver
+author:		David Brownell
+alias:		usb:v*p*d*dc*dsc*dp*icE0isc01ip03in*
+alias:		usb:v*p*d*dc*dsc*dp*icEFisc01ip01in*
+alias:		usb:v*p*d*dc*dsc*dp*ic02isc02ipFFin*
+alias:		usb:v1630p0042d*dc*dsc*dp*ic02isc02ipFFin*
+depends:	
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/sensor_power.ko
+module:		/lib/modules/4.9.118/sensor_power.ko
+license:	GPL
+description:	sensor power on and off
+author:		zhengzequn
+depends:	
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/sp2305_mipi.ko
+module:		/lib/modules/4.9.118/sp2305_mipi.ko
+license:	GPL
+description:	A low-level driver for sp2305 sensors
+author:		lwj
+alias:		i2c:sp2305_mipi
+alias:		i2c:sp2305_mipi_2
+depends:	vin_io
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/udp_tunnel.ko
+module:		/lib/modules/4.9.118/udp_tunnel.ko
+license:	GPL
+depends:	
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/videobuf2-dma-contig.ko
+module:		/lib/modules/4.9.118/videobuf2-dma-contig.ko
+license:	GPL
+author:		Pawel Osciak <pawel@osciak.com>
+description:	DMA-contig memory handling routines for videobuf2
+depends:	
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/vin_io.ko
+module:		/lib/modules/4.9.118/vin_io.ko
+description:	Video front end subdev for sunxi
+license:	Dual BSD/GPL
+author:		raymonxiu
+description:	Video front end OSAL for sunxi
+license:	Dual BSD/GPL
+author:		raymonxiu
+description:	Camera and CCI DRIVER for sunxi
+license:	Dual BSD/GPL
+author:		zhengzequn
+alias:		of:N*T*Callwinner,sunxi-csi_cciC*
+alias:		of:N*T*Callwinner,sunxi-csi_cci
+depends:	
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/vin_v4l2.ko
+module:		/lib/modules/4.9.118/vin_v4l2.ko
+description:	Video Input Module for Allwinner
+license:	Dual BSD/GPL
+author:		yangfeng
+depends:	vin_io,videobuf2-dma-contig
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/xhci-hcd.ko
+module:		/lib/modules/4.9.118/xhci-hcd.ko
+license:	GPL
+author:		Sarah Sharp
+description:	'eXtensible' Host Controller (xHC) Driver
+depends:	
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+### /lib/modules/4.9.118/xhci-plat-hcd.ko
+module:		/lib/modules/4.9.118/xhci-plat-hcd.ko
+license:	GPL
+description:	xHCI Platform Host Controller Driver
+alias:		platform:xhci-hcd
+alias:		of:N*T*Crenesas,rcar-gen3-xhciC*
+alias:		of:N*T*Crenesas,rcar-gen3-xhci
+alias:		of:N*T*Crenesas,rcar-gen2-xhciC*
+alias:		of:N*T*Crenesas,rcar-gen2-xhci
+alias:		of:N*T*Crenesas,xhci-r8a7795C*
+alias:		of:N*T*Crenesas,xhci-r8a7795
+alias:		of:N*T*Crenesas,xhci-r8a7793C*
+alias:		of:N*T*Crenesas,xhci-r8a7793
+alias:		of:N*T*Crenesas,xhci-r8a7791C*
+alias:		of:N*T*Crenesas,xhci-r8a7791
+alias:		of:N*T*Crenesas,xhci-r8a7790C*
+alias:		of:N*T*Crenesas,xhci-r8a7790
+alias:		of:N*T*Cmarvell,armada-380-xhciC*
+alias:		of:N*T*Cmarvell,armada-380-xhci
+alias:		of:N*T*Cmarvell,armada-375-xhciC*
+alias:		of:N*T*Cmarvell,armada-375-xhci
+alias:		of:N*T*Cxhci-platformC*
+alias:		of:N*T*Cxhci-platform
+alias:		of:N*T*Cgeneric-xhciC*
+alias:		of:N*T*Cgeneric-xhci
+alias:		acpi*:PNP0D10:*
+depends:	xhci-hcd
+intree:		Y
+vermagic:	4.9.118 preempt mod_unload ARMv7 thumb2 p2v8 
+__OC_END_module_metadata__
+
+echo __OC_SECTION_dev_all__; ls -l /dev 2>/dev/null; echo __OC_END_de
+v_all__
+__OC_SECTION_dev_all__
+drwxr-xr-x    2 root     root           180 Jan  1 00:00 block
+drwxr-xr-x    2 root     root           160 Jan  1 00:00 by-name
+crw-rw----    1 root     root      150,   0 Jan  1 00:00 cedar_dev
+drwxr-xr-x    2 root     root          2820 Jan  1 00:00 char
+crw-------    1 root     root        5,   1 Jan  1 00:00 console
+crw-rw----    1 root     root       10,  58 Jan  1 00:00 cpu_dma_latency
+drwxr-xr-x    4 root     root            80 Jan  1 00:00 disk
+crw-rw----    1 root     root      248,   0 Jan  1 00:00 disp
+crw-rw----    1 root     root       29,   0 Jan  1 00:00 fb0
+crw-rw----    1 root     root       29,   1 Jan  1 00:00 fb1
+crw-rw----    1 root     root       29,   2 Jan  1 00:00 fb2
+crw-rw----    1 root     root       29,   3 Jan  1 00:00 fb3
+crw-rw----    1 root     root       29,   4 Jan  1 00:00 fb4
+crw-rw----    1 root     root       29,   5 Jan  1 00:00 fb5
+crw-rw----    1 root     root       29,   6 Jan  1 00:00 fb6
+crw-rw----    1 root     root       29,   7 Jan  1 00:00 fb7
+crw-rw-rw-    1 root     root        1,   7 Jan  1 00:00 full
+crw-rw----    1 root     root      251,   0 Jan  1 00:00 g2d
+crw-rw----    1 root     root      254,   0 Jan  1 00:00 gpiochip0
+crw-rw----    1 root     root      254,   1 Jan  1 00:00 gpiochip1
+crw-rw----    1 root     root       89,   0 Jan  1 00:00 i2c-0
+crw-rw----    1 root     root       89,   1 Jan  1 00:00 i2c-1
+crw-rw----    1 root     root       89,   2 Jan  1 00:00 i2c-2
+crw-rw----    1 root     root       89,   4 Jan  1 00:00 i2c-4
+drwxr-xr-x    2 root     root            60 Jan  1 00:00 input
+crw-rw----    1 root     root       10,  63 Jan  1 00:00 ion
+crw-rw----    1 root     root        1,  11 Jan  1 00:00 kmsg
+crw-rw----    1 root     root      252,   0 Jan  1 00:00 media0
+crw-r-----    1 root     root        1,   1 Jan  1 00:00 mem
+crw-rw----    1 root     root       10,  55 Jan  1 00:00 memory_bandwidth
+brw-rw----    1 root     root      179,   0 Jan  1 00:00 mmcblk0
+brw-rw----    1 root     root      179,   1 Jan  1 00:00 mmcblk0p1
+brw-rw----    1 root     root      179,   2 Jan  1 00:00 mmcblk0p2
+brw-rw----    1 root     root      179,   3 Jan  1 00:00 mmcblk0p3
+brw-rw----    1 root     root      179,   4 Jan  1 00:00 mmcblk0p4
+brw-rw----    1 root     root      179,   5 Jan  1 00:00 mmcblk0p5
+brw-rw----    1 root     root      179,   6 Jan  1 00:00 mmcblk0p6
+crw-rw----    1 root     root       10,  57 Jan  1 00:00 network_latency
+crw-rw----    1 root     root       10,  56 Jan  1 00:00 network_throughput
+crw-rw-rw-    1 root     root        1,   3 Jan  1 00:00 null
+crw-------    1 root     root      108,   0 Jan  1 00:00 ppp
+crw-rw-rw-    1 root     root        5,   2 Jan  1 00:05 ptmx
+drwxr-xr-x    2 root     root             0 Jan  1 00:00 pts
+crw-rw-rw-    1 root     root        1,   8 Jan  1 00:00 random
+crw-rw----    1 root     root       10,  62 Jan  1 00:00 rfkill
+lrwxrwxrwx    1 root     root             9 Jan  1 00:00 root -> mmcblk0p5
+crw-rw----    1 root     root      253,   0 Jan  1 00:00 rtc0
+drwxr-xr-x    2 root     root            40 Jan  1 00:00 shm
+drwxr-xr-x    2 root     root           100 Jan  1 00:00 snd
+crw-rw----    1 root     root      153,   0 Jan  1 00:00 spidev1.0
+crw-rw----    1 root     root      153,   1 Jan  1 00:00 spidev1.1
+crw-rw----    1 root     root       10,  60 Jan  1 00:00 sunxi-reg
+crw-rw----    1 root     root       10,  59 Jan  1 00:00 sunxi-wlan
+crw-rw----    1 root     root      249,   0 Jan  1 00:00 sunxi_pwm0
+crw-rw----    1 root     root       10,  61 Jan  1 00:00 sunxi_soc_info
+crw-rw-rw-    1 root     root        5,   0 Jan  1 00:00 tty
+crw--w----    1 root     root        4,   0 Jan  1 00:00 tty0
+crw--w----    1 root     root        4,   1 Jan  1 00:00 tty1
+crw--w----    1 root     root        4,  10 Jan  1 00:00 tty10
+crw--w----    1 root     root        4,  11 Jan  1 00:00 tty11
+crw--w----    1 root     root        4,  12 Jan  1 00:00 tty12
+crw--w----    1 root     root        4,  13 Jan  1 00:00 tty13
+crw--w----    1 root     root        4,  14 Jan  1 00:00 tty14
+crw--w----    1 root     root        4,  15 Jan  1 00:00 tty15
+crw--w----    1 root     root        4,  16 Jan  1 00:00 tty16
+crw--w----    1 root     root        4,  17 Jan  1 00:00 tty17
+crw--w----    1 root     root        4,  18 Jan  1 00:00 tty18
+crw--w----    1 root     root        4,  19 Jan  1 00:00 tty19
+crw--w----    1 root     root        4,   2 Jan  1 00:00 tty2
+crw--w----    1 root     root        4,  20 Jan  1 00:00 tty20
+crw--w----    1 root     root        4,  21 Jan  1 00:00 tty21
+crw--w----    1 root     root        4,  22 Jan  1 00:00 tty22
+crw--w----    1 root     root        4,  23 Jan  1 00:00 tty23
+crw--w----    1 root     root        4,  24 Jan  1 00:00 tty24
+crw--w----    1 root     root        4,  25 Jan  1 00:00 tty25
+crw--w----    1 root     root        4,  26 Jan  1 00:00 tty26
+crw--w----    1 root     root        4,  27 Jan  1 00:00 tty27
+crw--w----    1 root     root        4,  28 Jan  1 00:00 tty28
+crw--w----    1 root     root        4,  29 Jan  1 00:00 tty29
+crw--w----    1 root     root        4,   3 Jan  1 00:00 tty3
+crw--w----    1 root     root        4,  30 Jan  1 00:00 tty30
+crw--w----    1 root     root        4,  31 Jan  1 00:00 tty31
+crw--w----    1 root     root        4,  32 Jan  1 00:00 tty32
+crw--w----    1 root     root        4,  33 Jan  1 00:00 tty33
+crw--w----    1 root     root        4,  34 Jan  1 00:00 tty34
+crw--w----    1 root     root        4,  35 Jan  1 00:00 tty35
+crw--w----    1 root     root        4,  36 Jan  1 00:00 tty36
+crw--w----    1 root     root        4,  37 Jan  1 00:00 tty37
+crw--w----    1 root     root        4,  38 Jan  1 00:00 tty38
+crw--w----    1 root     root        4,  39 Jan  1 00:00 tty39
+crw--w----    1 root     root        4,   4 Jan  1 00:00 tty4
+crw--w----    1 root     root        4,  40 Jan  1 00:00 tty40
+crw--w----    1 root     root        4,  41 Jan  1 00:00 tty41
+crw--w----    1 root     root        4,  42 Jan  1 00:00 tty42
+crw--w----    1 root     root        4,  43 Jan  1 00:00 tty43
+crw--w----    1 root     root        4,  44 Jan  1 00:00 tty44
+crw--w----    1 root     root        4,  45 Jan  1 00:00 tty45
+crw--w----    1 root     root        4,  46 Jan  1 00:00 tty46
+crw--w----    1 root     root        4,  47 Jan  1 00:00 tty47
+crw--w----    1 root     root        4,  48 Jan  1 00:00 tty48
+crw--w----    1 root     root        4,  49 Jan  1 00:00 tty49
+crw--w----    1 root     root        4,   5 Jan  1 00:00 tty5
+crw--w----    1 root     root        4,  50 Jan  1 00:00 tty50
+crw--w----    1 root     root        4,  51 Jan  1 00:00 tty51
+crw--w----    1 root     root        4,  52 Jan  1 00:00 tty52
+crw--w----    1 root     root        4,  53 Jan  1 00:00 tty53
+crw--w----    1 root     root        4,  54 Jan  1 00:00 tty54
+crw--w----    1 root     root        4,  55 Jan  1 00:00 tty55
+crw--w----    1 root     root        4,  56 Jan  1 00:00 tty56
+crw--w----    1 root     root        4,  57 Jan  1 00:00 tty57
+crw--w----    1 root     root        4,  58 Jan  1 00:00 tty58
+crw--w----    1 root     root        4,  59 Jan  1 00:00 tty59
+crw--w----    1 root     root        4,   6 Jan  1 00:00 tty6
+crw--w----    1 root     root        4,  60 Jan  1 00:00 tty60
+crw--w----    1 root     root        4,  61 Jan  1 00:00 tty61
+crw--w----    1 root     root        4,  62 Jan  1 00:00 tty62
+crw--w----    1 root     root        4,  63 Jan  1 00:00 tty63
+crw--w----    1 root     root        4,   7 Jan  1 00:00 tty7
+crw--w----    1 root     root        4,   8 Jan  1 00:00 tty8
+crw--w----    1 root     root        4,   9 Jan  1 00:00 tty9
+crw-rw----    1 root     root      247,   0 Jan  1 00:00 ttyS0
+crw-rw----    1 root     root      247,   2 Jan  1 00:00 ttyS2
+crw-rw-rw-    1 root     root        1,   9 Jan  1 00:00 urandom
+crw-rw----    1 root     root       81,   4 Jan  1 00:00 v4l-subdev0
+crw-rw----    1 root     root       81,   5 Jan  1 00:00 v4l-subdev1
+crw-rw----    1 root     root       81,  14 Jan  1 00:00 v4l-subdev10
+crw-rw----    1 root     root       81,  15 Jan  1 00:00 v4l-subdev11
+crw-rw----    1 root     root       81,  16 Jan  1 00:00 v4l-subdev12
+crw-rw----    1 root     root       81,  17 Jan  1 00:00 v4l-subdev13
+crw-rw----    1 root     root       81,  18 Jan  1 00:00 v4l-subdev14
+crw-rw----    1 root     root       81,  19 Jan  1 00:00 v4l-subdev15
+crw-rw----    1 root     root       81,  20 Jan  1 00:00 v4l-subdev16
+crw-rw----    1 root     root       81,   6 Jan  1 00:00 v4l-subdev2
+crw-rw----    1 root     root       81,   7 Jan  1 00:00 v4l-subdev3
+crw-rw----    1 root     root       81,   8 Jan  1 00:00 v4l-subdev4
+crw-rw----    1 root     root       81,   9 Jan  1 00:00 v4l-subdev5
+crw-rw----    1 root     root       81,  10 Jan  1 00:00 v4l-subdev6
+crw-rw----    1 root     root       81,  11 Jan  1 00:00 v4l-subdev7
+crw-rw----    1 root     root       81,  12 Jan  1 00:00 v4l-subdev8
+crw-rw----    1 root     root       81,  13 Jan  1 00:00 v4l-subdev9
+crw-rw----    1 root     root        7,   0 Jan  1 00:00 vcs
+crw-rw----    1 root     root        7,   1 Jan  1 00:00 vcs1
+crw-rw----    1 root     root        7, 128 Jan  1 00:00 vcsa
+crw-rw----    1 root     root        7, 129 Jan  1 00:00 vcsa1
+crw-rw----    1 root     root       81,   0 Jan  1 00:00 video0
+crw-rw----    1 root     root       81,   1 Jan  1 00:00 video1
+crw-rw----    1 root     root       81,   2 Jan  1 00:00 video2
+crw-rw----    1 root     root       81,   3 Jan  1 00:00 video3
+crw-rw----    1 root     root       10, 130 Jan  1 00:00 watchdog
+crw-rw----    1 root     root      250,   0 Jan  1 00:00 watchdog0
+crw-rw-rw-    1 root     root        1,   5 Jan  1 00:00 zero
+__OC_END_dev_all__
+
+echo __OC_SECTION_i2c_details__; for d in /sys/bus/i2c/devices/*; do 
+[ -e "$d" ] || continue; echo "### $d"; for f in name modalias uevent driver/mod
+ule; do [ -e "$d/$f" ] && { echo "$f:"; cat "$d/$f" 2>/dev/null || ls -l "$d/$f"
+; }; done; [ -e "$d/of_node" ] && { echo of_node; find "$d/of_node" -maxdepth 1 
+-type f -print -exec sh -c "echo -n "  "; tr \"\000\" \"\n\" < "$1"" sh {} \; 2>
+/dev/null; }; done; echo __OC_END_i2c_details__
+__OC_SECTION_i2c_details__
+### /sys/bus/i2c/devices/0-001e
+name:
+gc2145
+modalias:
+i2c:gc2145
+uevent:
+DRIVER=gc2145
+MODALIAS=i2c:gc2145
+driver/module:
+lrwxrwxrwx    1 root     root             0 Jan  1 00:05 /sys/bus/i2c/devices/0-001e/driver/module -> ../../../../module/vin_io
+### /sys/bus/i2c/devices/1-007f
+name:
+opn87xx_mipi
+modalias:
+i2c:opn87xx_mipi
+uevent:
+DRIVER=opn87xx_mipi
+MODALIAS=i2c:opn87xx_mipi
+driver/module:
+lrwxrwxrwx    1 root     root             0 Jan  1 00:05 /sys/bus/i2c/devices/1-007f/driver/module -> ../../../../module/vin_io
+### /sys/bus/i2c/devices/2-005d
+name:
+echo __OC_SECTION_spi_details__; for d in /sys/bus/spi/devices/*; do [ -e "$d" ] || continue; echo "### $d"; for f in modalias uevent driver/module; do [ -e "$d/$f" ] && { echo "$f:"; cat "$d/$f" 2>/dev/null || ls -l "$d/$f"; }; done; [ -e "$d/of_node" ] && { echo of_node; find "$d/of_node" -maxdepth 1 -type f -print -exec sh -c "echo -n "  "; tr \"\000\" \"\n\" < "$1"" sh {} \; 2>/dev/null; }; done; echo __OC_END_spi_details__
+gt911
+modalias:
+i2c:gt911
+uevent:
+OF_NAME=ctp0
+OF_FULLNAME=/soc@03000000/twi@0x05002800/ctp0
+OF_COMPATIBLE_0=goodix,gt911
+OF_COMPATIBLE_N=1
+MODALIAS=i2c:gt911
+of_node
+### /sys/bus/i2c/devices/4-0051
+name:
+pcf8563
+modalias:
+i2c:pcf8563
+uevent:
+OF_NAME=rtc
+OF_FULLNAME=/soc@03000000/twi@0x07081400/rtc@51
+OF_COMPATIBLE_0=nxp,pcf8563
+OF_COMPATIBLE_N=1
+MODALIAS=i2c:pcf8563
+of_node
+### /sys/bus/i2c/devices/i2c-0
+name:
+twi0
+uevent:
+OF_NAME=twi
+OF_FULLNAME=/soc@03000000/twi@0x05002000
+OF_TYPE=twi0
+OF_COMPATIBLE_0=allwinner,sun8i-twi
+OF_COMPATIBLE_N=1
+OF_ALIAS_0=twi0
+of_node
+### /sys/bus/i2c/devices/i2c-1
+name:
+twi1
+uevent:
+OF_NAME=twi
+OF_FULLNAME=/soc@03000000/twi@0x05002400
+OF_TYPE=twi1
+OF_COMPATIBLE_0=allwinner,sun8i-twi
+OF_COMPATIBLE_N=1
+OF_ALIAS_0=twi1
+of_node
+### /sys/bus/i2c/devices/i2c-2
+name:
+twi2
+uevent:
+OF_NAME=twi
+OF_FULLNAME=/soc@03000000/twi@0x05002800
+OF_TYPE=twi2
+OF_COMPATIBLE_0=allwinner,sun8i-twi
+OF_COMPATIBLE_N=1
+OF_ALIAS_0=twi2
+of_node
+### /sys/bus/i2c/devices/i2c-4
+name:
+twi4
+uevent:
+OF_NAME=twi
+OF_FULLNAME=/soc@03000000/twi@0x07081400
+OF_TYPE=twi4
+OF_COMPATIBLE_0=allwinner,sun8i-twi
+OF_COMPATIBLE_N=1
+OF_ALIAS_0=twi4
+of_node
+__OC_END_i2c_details__
+
+echo __OC_SECTION_spi_details__; for d in /sys/bus/spi/devices/*; do 
+[ -e "$d" ] || continue; echo "### $d"; for f in modalias uevent driver/module; 
+do [ -e "$d/$f" ] && { echo "$f:"; cat "$d/$f" 2>/dev/null || ls -l "$d/$f"; }; 
+done; [ -e "$d/of_node" ] && { echo of_node; find "$d/of_node" -maxdepth 1 -type
+ f -print -exec sh -c "echo -n "  "; tr \"\000\" \"\n\" < "$1"" sh {} \; 2>/dev/
+null; }; done; echo __OC_END_spi_details__
+__OC_SECTION_spi_details__
+### /sys/bus/spi/devices/spi1.0
+modalias:
+spi:spidev
+uevent:
+DRIVER=spidev
+OF_NAME=spi_board0
+OF_FULLNAME=/soc@03000000/spi@05011000/spi_board0
+OF_TYPE=spi_board0
+OF_COMPATIBLE_0=spidev
+OF_COMPATIBLE_N=1
+MODALIAS=spi:spidev
+of_node
+### /sys/bus/spi/devices/spi1.1
+modalias:
+spi:spidev
+uevent:
+DRIVER=spidev
+OF_NAME=spi_board1
+OF_FULLNAME=/soc@03000000/spi@05011000/spi_board1
+OF_TYPE=spi_board1
+OF_COMPATIBLE_0=spidev
+OF_COMPATIBLE_N=1
+MODALIAS=spi:spidev
+of_node
+__OC_END_spi_details__
+
+echo __OC_SECTION_video_device_details__; for d in /sys/class/video4l
+inux/*; do [ -e "$d" ] || continue; echo "### $d"; for f in name dev index ueven
+t; do [ -e "$d/$f" ] && { echo "$f:"; cat "$d/$f" 2>/dev/null; }; done; readlink
+ -f "$d"; done; for d in /sys/class/media/*; do [ -e "$d" ] || continue; echo "#
+## $d"; for f in model dev uevent; do [ -e "$d/$f" ] && { echo "$f:"; cat "$d/$f
+" 2>/dev/null; }; done; readlink -f "$d"; done; echo __OC_END_video_device_detai
+ls__
+__OC_SECTION_video_device_details__
+### /sys/class/video4linux/v4l-subdev0
+name:
+opn87xx_mipi
+dev:
+81:4
+index:
+4
+uevent:
+MAJOR=81
+MINOR=4
+DEVNAME=v4l-subdev0
+/sys/devices/platform/soc/6600800.vind/video4linux/v4l-subdev0
+### /sys/class/video4linux/v4l-subdev1
+name:
+gc2145
+dev:
+81:5
+index:
+5
+uevent:
+MAJOR=81
+MINOR=5
+DEVNAME=v4l-subdev1
+/sys/devices/platform/soc/6600800.vind/video4linux/v4l-subdev1
+### /sys/class/video4linux/v4l-subdev10
+name:
+echo __OC_SECTION_platform_key_uevents__; for d in /sys/bus/platform/devices/6600800.vind /sys/bus/platform/devices/660c000.mipi /sys/bus/platform/devices/csi0 /sys/bus/platform/devices/csi1 /sys/bus/platform/devices/sensor0 /sys/bus/platform/devices/sensor1 /sys/bus/platform/devices/300a000.pwm /sys/bus/platform/devices/5100000.udc-controller /sys/bus/platform/devices/spi1 /sys/bus/platform/devices/twi0 /sys/bus/platform/devices/twi1 /sys/bus/platform/devices/twi2 /sys/bus/platform/devices/twi4 /sys/bus/platform/devices/5020000.eth /sys/bus/platform/devices/30090a0.watchdog /sys/bus/platform/devices/2400000.nna /sys/bus/platform/devices/1c0e000.ve /sys/bus/platform/devices/ion; do [ -e "$d" ] || continue; echo "### $d"; [ -e "$d/uevent" ] && cat "$d/uevent"; [ -e "$d/driver" ] && ls -l "$d/driver"; [ -e "$d/of_node" ] && { echo of_node; find "$d/of_node" -maxdepth 1 -type f -print -exec sh -c "echo -n "  "; tr \"\000\" \"\n\" < "$1"" sh {} \; 2>/dev/null; }; done; echo __OC_END_platform_key_uevents__
+sunxi_h3a.0
+dev:
+81:14
+index:
+14
+uevent:
+MAJOR=81
+MINOR=14
+DEVNAME=v4l-subdev10
+/sys/devices/platform/soc/6600800.vind/video4linux/v4l-subdev10
+### /sys/class/video4linux/v4l-subdev11
+name:
+sunxi_isp.1
+dev:
+81:15
+index:
+15
+uevent:
+MAJOR=81
+MINOR=15
+DEVNAME=v4l-subdev11
+/sys/devices/platform/soc/6600800.vind/video4linux/v4l-subdev11
+### /sys/class/video4linux/v4l-subdev12
+name:
+sunxi_h3a.1
+dev:
+81:16
+index:
+16
+uevent:
+MAJOR=81
+MINOR=16
+DEVNAME=v4l-subdev12
+/sys/devices/platform/soc/6600800.vind/video4linux/v4l-subdev12
+### /sys/class/video4linux/v4l-subdev13
+name:
+sunxi_scaler.0
+dev:
+81:17
+index:
+17
+uevent:
+MAJOR=81
+MINOR=17
+DEVNAME=v4l-subdev13
+/sys/devices/platform/soc/6600800.vind/video4linux/v4l-subdev13
+### /sys/class/video4linux/v4l-subdev14
+name:
+sunxi_scaler.1
+dev:
+81:18
+index:
+18
+uevent:
+MAJOR=81
+MINOR=18
+DEVNAME=v4l-subdev14
+/sys/devices/platform/soc/6600800.vind/video4linux/v4l-subdev14
+### /sys/class/video4linux/v4l-subdev15
+name:
+sunxi_scaler.2
+dev:
+81:19
+index:
+19
+uevent:
+MAJOR=81
+MINOR=19
+DEVNAME=v4l-subdev15
+/sys/devices/platform/soc/6600800.vind/video4linux/v4l-subdev15
+### /sys/class/video4linux/v4l-subdev16
+name:
+sunxi_scaler.3
+dev:
+81:20
+index:
+20
+uevent:
+MAJOR=81
+MINOR=20
+DEVNAME=v4l-subdev16
+/sys/devices/platform/soc/6600800.vind/video4linux/v4l-subdev16
+### /sys/class/video4linux/v4l-subdev2
+name:
+vin_cap.0
+dev:
+81:6
+index:
+6
+uevent:
+MAJOR=81
+MINOR=6
+DEVNAME=v4l-subdev2
+/sys/devices/platform/soc/6600800.vind/video4linux/v4l-subdev2
+### /sys/class/video4linux/v4l-subdev3
+name:
+vin_cap.1
+dev:
+81:7
+index:
+7
+uevent:
+MAJOR=81
+MINOR=7
+DEVNAME=v4l-subdev3
+/sys/devices/platform/soc/6600800.vind/video4linux/v4l-subdev3
+### /sys/class/video4linux/v4l-subdev4
+name:
+vin_cap.2
+dev:
+81:8
+index:
+8
+uevent:
+MAJOR=81
+MINOR=8
+DEVNAME=v4l-subdev4
+/sys/devices/platform/soc/6600800.vind/video4linux/v4l-subdev4
+### /sys/class/video4linux/v4l-subdev5
+name:
+vin_cap.3
+dev:
+81:9
+index:
+9
+uevent:
+MAJOR=81
+MINOR=9
+DEVNAME=v4l-subdev5
+/sys/devices/platform/soc/6600800.vind/video4linux/v4l-subdev5
+### /sys/class/video4linux/v4l-subdev6
+name:
+sunxi_csi.0
+dev:
+81:10
+index:
+10
+uevent:
+MAJOR=81
+MINOR=10
+DEVNAME=v4l-subdev6
+/sys/devices/platform/soc/6600800.vind/video4linux/v4l-subdev6
+### /sys/class/video4linux/v4l-subdev7
+name:
+sunxi_csi.1
+dev:
+81:11
+index:
+11
+uevent:
+MAJOR=81
+MINOR=11
+DEVNAME=v4l-subdev7
+/sys/devices/platform/soc/6600800.vind/video4linux/v4l-subdev7
+### /sys/class/video4linux/v4l-subdev8
+name:
+sunxi_mipi.0
+dev:
+81:12
+index:
+12
+uevent:
+MAJOR=81
+MINOR=12
+DEVNAME=v4l-subdev8
+/sys/devices/platform/soc/6600800.vind/video4linux/v4l-subdev8
+### /sys/class/video4linux/v4l-subdev9
+name:
+sunxi_isp.0
+dev:
+81:13
+index:
+13
+uevent:
+MAJOR=81
+MINOR=13
+DEVNAME=v4l-subdev9
+/sys/devices/platform/soc/6600800.vind/video4linux/v4l-subdev9
+### /sys/class/video4linux/video0
+name:
+vin_video0
+dev:
+81:0
+index:
+0
+uevent:
+MAJOR=81
+MINOR=0
+DEVNAME=video0
+/sys/devices/platform/soc/6600800.vind/video4linux/video0
+### /sys/class/video4linux/video1
+name:
+vin_video1
+dev:
+81:1
+index:
+1
+uevent:
+MAJOR=81
+MINOR=1
+DEVNAME=video1
+/sys/devices/platform/soc/6600800.vind/video4linux/video1
+### /sys/class/video4linux/video2
+name:
+vin_video2
+dev:
+81:2
+index:
+2
+uevent:
+MAJOR=81
+MINOR=2
+DEVNAME=video2
+/sys/devices/platform/soc/6600800.vind/video4linux/video2
+### /sys/class/video4linux/video3
+name:
+vin_video3
+dev:
+81:3
+index:
+3
+uevent:
+MAJOR=81
+MINOR=3
+DEVNAME=video3
+/sys/devices/platform/soc/6600800.vind/video4linux/video3
+__OC_END_video_device_details__
+
+echo __OC_SECTION_platform_key_uevents__; for d in /sys/bus/platform/
+devices/6600800.vind /sys/bus/platform/devices/660c000.mipi /sys/bus/platform/de
+vices/csi0 /sys/bus/platform/devices/csi1 /sys/bus/platform/devices/sensor0 /sys
+/bus/platform/devices/sensor1 /sys/bus/platform/devices/300a000.pwm /sys/bus/pla
+tform/devices/5100000.udc-controller /sys/bus/platform/devices/spi1 /sys/bus/pla
+tform/devices/twi0 /sys/bus/platform/devices/twi1 /sys/bus/platform/devices/twi2
+ /sys/bus/platform/devices/twi4 /sys/bus/
+> echo __OC_SECTION_boot_partition_probe__; for p in /dev/by-name/bootlogo /dev/
+by-name/cfg /dev/by-name/env /dev/by-name/boot /dev/by-name/rootfs /dev/by-name/
+UDISK; do [ -e "$p" ] || continue; echo "### $p"; ls -l "$p"; dd if="$p" bs=64 c
+ount=4 2>/dev/null | hexdump -C; done; echo __OC_END_boot_partition_probe__
+-ash: syntax error: unexpected word (expecting "do")
+
+echo __OC_SECTION_important_dirs__; ls -la /boot 2>/dev/null; ls -la 
+/lib/firmware 2>/dev/null; ls -la /etc 2>/dev/null | grep -E "sunxi|wifi|wireles
+s|modules|config|fstab|network|rc|init|mpp|isp|camera"; echo __OC_END_important_
+dirs__
+__OC_SECTION_important_dirs__
+drwxr-xr-x    2 root     root          4096 Oct 27  2022 .
+drwxr-xr-x   10 root     root          4096 Jan  1 00:00 ..
+drwxr-xr-x    2 root     root          4096 Oct 27  2022 config
+-rw-rw-r--    1 root     root           165 Oct 27  2022 fstab
+-rw-r--r--    1 root     root          1409 Oct 27  2022 fw_env.config
+drwxrwxr-x    2 root     root          4096 Oct 18  2024 init.d
+-rw-rw-r--    1 root     root          1179 Oct 27  2022 inittab
+drwxr-xr-x    2 root     root          4096 Oct 27  2022 modules-boot.d
+drwxr-xr-x    2 root     root          4096 Oct 27  2022 modules.d
+-rwxrwxr-x    1 root     root          2428 Oct 27  2022 rc.common
+drwxr-xr-x    2 root     root          4096 Oct 27  2022 rc.d
+__OC_END_important_dirs__

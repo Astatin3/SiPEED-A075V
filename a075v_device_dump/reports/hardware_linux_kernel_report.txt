@@ -1,0 +1,917 @@
+'
+
+echo __OC_SECTION_uname__; uname -a; cat /proc/version 2>/dev/null; e
+cho __OC_END_uname__
+__OC_SECTION_uname__
+Linux sipeed 4.9.118 #3410 PREEMPT Mon Jan 9 01:34:54 UTC 2023 armv7l GNU/Linux
+Linux version 4.9.118 (work@work-virtual-machine) (gcc version 6.4.1 (OpenWrt/Linaro GCC 6.4-2017.11 2017-11) ) #3410 PREEMPT Mon Jan 9 01:34:54 UTC 2023
+__OC_END_uname__
+
+echo __OC_SECTION_os_release__; cat /etc/os-release 2>/dev/null; cat 
+/etc/openwrt_release 2>/dev/null; cat /etc/tina_version 2>/dev/null; cat /etc/ba
+nner 2>/dev/null; echo __OC_END_os_release__
+__OC_SECTION_os_release__
+DISTRIB_ID='tina.work.20230109.013343'
+DISTRIB_RELEASE='Neptune'
+DISTRIB_REVISION='5C1C9C53'
+DISTRIB_TARGET='v833-perf1/generic v2.1'
+DISTRIB_DESCRIPTION='tina.work.20230109.013343 3.5.1'
+DISTRIB_TAINTS='no-all mklibs busybox'
+   __  ___     _        __   _               
+  /  |/  /__ _(_)_ __  / /  (_)__  __ ____ __
+ / /|_/ / _ `/ /\ \ / / /__/ / _ \/ // /\ \ /
+/_/  /_/\_,_/_//_\_\ /____/_/_//_/\_,_//_\_\ 
+ ----------------------------------------------
+__OC_END_os_release__
+
+echo __OC_SECTION_cpuinfo__; cat /proc/cpuinfo 2>/dev/null; echo __OC
+_END_cpuinfo__
+__OC_SECTION_cpuinfo__
+processor	: 0
+model name	: ARMv7 Processor rev 5 (v7l)
+BogoMIPS	: 48.00
+Features	: half thumb fastmult vfp edsp neon vfpv3 tls vfpv4 idiva idivt vfpd32 lpae 
+CPU implementer	: 0x41
+CPU architecture: 7
+CPU variant	: 0x0
+CPU part	: 0xc07
+CPU revision	: 5
+
+Hardware	: sun8iw19
+Revision	: 0000
+Serial		: 0000000000000000
+__OC_END_cpuinfo__
+
+echo __OC_SECTION_meminfo__; cat /proc/meminfo 2>/dev/null; echo __OC
+_END_meminfo__
+__OC_SECTION_meminfo__
+MemTotal:         124540 kB
+MemFree:           82024 kB
+MemAvailable:      87588 kB
+Buffers:             912 kB
+Cached:             7408 kB
+SwapCached:            0 kB
+Active:            10076 kB
+Inactive:           6040 kB
+Active(anon):       7796 kB
+Inactive(anon):       44 kB
+Active(file):       2280 kB
+Inactive(file):     5996 kB
+Unevictable:           0 kB
+Mlocked:               0 kB
+SwapTotal:             0 kB
+SwapFree:              0 kB
+Dirty:                 0 kB
+Writeback:             0 kB
+AnonPages:          7804 kB
+Mapped:             9408 kB
+Shmem:                48 kB
+Slab:               5916 kB
+SReclaimable:       1788 kB
+SUnreclaim:         4128 kB
+KernelStack:         432 kB
+PageTables:          200 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:       62268 kB
+Committed_AS:      10640 kB
+VmallocTotal:     901120 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+CmaTotal:          16384 kB
+CmaFree:           11264 kB
+__OC_END_meminfo__
+
+echo __OC_SECTION_cmdline__; cat /proc/cmdline 2>/dev/null; echo __OC
+_END_cmdline__
+__OC_SECTION_cmdline__
+earlyprintk=sunxi-uart,0x05000000 initcall_debug=0 console=ttyS0,115200 loglevel=0 root=/dev/mmcblk0p5 rootwait init=/pseudo_init rdinit=/rdinit partitions=bootlogo@mmcblk0p1:cfg@mmcblk0p2:env@mmcblk0p3:boot@mmcblk0p4:rootfs@mmcblk0p5:UDISK@mmcblk0p6 cma=16M mac_addr= wifi_mac= bt_mac= selinux= specialstr= coherent_pool=16K ion_carveout_list= rootfstype=ext4 androidboot.mode=normal androidboot.hardware=sun8iw19p1 boot_type=2 androidboot.boot_type=2 gpt=1 uboot_message=2018.05(05/31/2021-20:25:24) mbr_offset=1032192 disp_reserve=307712,0x46400000 bootreason=unknow
+__OC_END_cmdline__
+
+echo __OC_SECTION_device_tree_identity__; for f in /proc/device-tree/
+model /proc/device-tree/compatible /sys/firmware/devicetree/base/model /sys/firm
+ware/devicetree/base/compatible; do [ -e "$f" ] && { echo "$f:"; tr "\000" "\n" 
+< "$f"; }; done; echo __OC_END_device_tree_identity__
+__OC_SECTION_device_tree_identity__
+/proc/device-tree/model:
+sun8iw19
+/proc/device-tree/compatible:
+allwinner,sun8iw19p1
+/sys/firmware/devicetree/base/model:
+sun8iw19
+/sys/firmware/devicetree/base/compatible:
+allwinner,sun8iw19p1
+__OC_END_device_tree_identity__
+
+echo __OC_SECTION_mtd_partitions__; cat /proc/mtd 2>/dev/null; cat /p
+roc/partitions 2>/dev/null; ls -l /dev/by-name 2>/dev/null; ls -l /dev/block/by-
+name 2>/dev/null; ls -l /dev/mtd* /dev/mmcblk* 2>/dev/null; echo __OC_END_mtd_pa
+rtitions__
+__OC_SECTION_mtd_partitions__
+dev:    size   erasesize  name
+major minor  #blocks  name
+
+ 179        0     123904 mmcblk0
+ 179        1       3048 mmcblk0p1
+ 179        2       5120 mmcblk0p2
+ 179        3        256 mmcblk0p3
+ 179        4       6144 mmcblk0p4
+ 179        5      65536 mmcblk0p5
+ 179        6      19207 mmcblk0p6
+lrwxrwxrwx    1 root     root            14 Jan  1 00:00 UDISK -> /dev/mmcblk0p6
+lrwxrwxrwx    1 root     root            14 Jan  1 00:00 boot -> /dev/mmcblk0p4
+lrwxrwxrwx    1 root     root            14 Jan  1 00:00 bootlogo -> /dev/mmcblk0p1
+lrwxrwxrwx    1 root     root            14 Jan  1 00:00 cfg -> /dev/mmcblk0p2
+lrwxrwxrwx    1 root     root            14 Jan  1 00:00 env -> /dev/mmcblk0p3
+lrwxrwxrwx    1 root     root            14 Jan  1 00:00 rootfs -> /dev/mmcblk0p5
+brw-rw----    1 root     root      179,   0 Jan  1 00:00 /dev/mmcblk0
+brw-rw----    1 root     root      179,   1 Jan  1 00:00 /dev/mmcblk0p1
+brw-rw----    1 root     root      179,   2 Jan  1 00:00 /dev/mmcblk0p2
+brw-rw----    1 root     root      179,   3 Jan  1 00:00 /dev/mmcblk0p3
+__OC_END_mtd_partitions__
+
+echo __OC_SECTION_mounts_df__; cat /proc/mounts 2>/dev/null; df -h 2>
+/dev/null; echo __OC_END_mounts_df__
+__OC_SECTION_mounts_df__
+/dev/root / ext4 rw,relatime,data=ordered 0 0
+devtmpfs /dev devtmpfs rw,relatime,size=54008k,nr_inodes=13502,mode=755 0 0
+/proc /proc proc rw,relatime 0 0
+tmpfs /tmp tmpfs rw,relatime 0 0
+sys /sys sysfs rw,relatime 0 0
+none /sys/kernel/debug debugfs rw,relatime 0 0
+devpts /dev/pts devpts rw,relatime,gid=5,mode=620,ptmxmode=000 0 0
+/dev/mmcblk0p2 /mnt/cfg ext4 rw,relatime,data=ordered 0 0
+/dev/mmcblk0p6 /mnt/UDISK ext4 rw,relatime,data=ordered 0 0
+/dev/pts /dev/pts devpts rw,relatime,mode=600,ptmxmode=000 0 0
+/dev/mmcblk0p6 /root ext4 rw,relatime,data=ordered 0 0
+Filesystem                Size      Used Available Use% Mounted on
+/dev/root                58.5M     34.8M     22.4M  61% /
+devtmpfs                 52.7M     32.0K     52.7M   0% /dev
+tmpfs                    60.8M     16.0K     60.8M   0% /tmp
+/dev/mmcblk0p2            3.8M     33.0K      3.7M   1% /mnt/cfg
+/dev/mmcblk0p6           17.2M     10.9M      4.9M  69% /mnt/UDISK
+/dev/mmcblk0p6           17.2M     10.9M      4.9M  69% /root
+__OC_END_mounts_df__
+
+echo __OC_SECTION_loaded_modules__; cat /proc/modules 2>/dev/null; ls
+mod 2>/dev/null; echo __OC_END_loaded_modules__
+__OC_SECTION_loaded_modules__
+8189fs 686673 0 - Live 0xbf906000
+8723ds 847720 0 - Live 0xbf834000
+vin_v4l2 90560 2 - Live 0xbf81a000
+gc2145 10112 0 - Live 0xbf814000
+opn87xx_mipi 3968 0 - Live 0xbf810000
+sensor_power 4448 0 - Live 0xbf80b000
+vin_io 19520 5 vin_v4l2,gc2145,opn87xx_mipi, Live 0xbf803000
+videobuf2_dma_contig 4224 1 vin_v4l2, Live 0xbf800000
+8189fs                686673  0 
+8723ds                847720  0 
+gc2145                 10112  0 
+opn87xx_mipi            3968  0 
+sensor_power            4448  0 
+videobuf2_dma_contig    4224  1 vin_v4l2
+vin_io                 19520  5 vin_v4l2
+vin_v4l2               90560  2 
+__OC_END_loaded_modules__
+
+echo __OC_SECTION_available_modules__; find /lib/modules -maxdepth 4 
+-type f 2>/dev/null | sort; echo __OC_END_available_modules__
+__OC_SECTION_available_modules__
+-ash: sort: not found
+__OC_END_available_modules__
+
+echo __OC_SECTION_video_media_devs__; ls -l /dev/video* /dev/media* /
+dev/v4l* 2>/dev/null; for d in /sys/class/video4linux/* /sys/class/media/*; do [
+ -e "$d" ] && { echo "### $d"; ls -l "$d"; [ -e "$d/name" ] && cat "$d/name"; [ 
+-e "$d/dev" ] && cat "$d/dev"; }; done; echo __OC_END_video_media_devs__
+__OC_SECTION_video_media_devs__
+crw-rw----    1 root     root      252,   0 Jan  1 00:00 /dev/media0
+crw-rw----    1 root     root       81,   0 Jan  1 00:00 /dev/video0
+crw-rw----    1 root     root       81,   1 Jan  1 00:00 /dev/video1
+crw-rw----    1 root     root       81,   2 Jan  1 00:00 /dev/video2
+crw-rw----    1 root     root       81,   3 Jan  1 00:00 /dev/video3
+### /sys/class/video4linux/v4l-subdev0
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 /sys/class/video4linux/v4l-subdev0 -> ../../devices/platform/soc/6600800.vind/video4linux/v4l-subdev0
+opn87xx_mipi
+81:4
+### /sys/class/video4linux/v4l-subdev1
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 /sys/class/video4linux/v4l-subdev1 -> ../../devices/platform/soc/6600800.vind/video4linux/v4l-subdev1
+gc2145
+81:5
+### /sys/class/video4linux/v4l-subdev10
+echo __OC_SECTION_hardware_dev_nodes__; ls -l /dev/i2c* /dev/spi* /dev/gpio* /dev/pwm* /dev/input* /dev/fb* /dev/disp* /dev/cedar* /dev/ion* /dev/mem /dev/watchdog* /dev/ttyS* 2>/dev/null; echo __OC_END_hardware_dev_nodes__
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 /sys/class/video4linux/v4l-subdev10 -> ../../devices/platform/soc/6600800.vind/video4linux/v4l-subdev10
+sunxi_h3a.0
+81:14
+### /sys/class/video4linux/v4l-subdev11
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 /sys/class/video4linux/v4l-subdev11 -> ../../devices/platform/soc/6600800.vind/video4linux/v4l-subdev11
+sunxi_isp.1
+81:15
+### /sys/class/video4linux/v4l-subdev12
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 /sys/class/video4linux/v4l-subdev12 -> ../../devices/platform/soc/6600800.vind/video4linux/v4l-subdev12
+sunxi_h3a.1
+81:16
+### /sys/class/video4linux/v4l-subdev13
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 /sys/class/video4linux/v4l-subdev13 -> ../../devices/platform/soc/6600800.vind/video4linux/v4l-subdev13
+sunxi_scaler.0
+81:17
+### /sys/class/video4linux/v4l-subdev14
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 /sys/class/video4linux/v4l-subdev14 -> ../../devices/platform/soc/6600800.vind/video4linux/v4l-subdev14
+sunxi_scaler.1
+81:18
+### /sys/class/video4linux/v4l-subdev15
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 /sys/class/video4linux/v4l-subdev15 -> ../../devices/platform/soc/6600800.vind/video4linux/v4l-subdev15
+sunxi_scaler.2
+81:19
+### /sys/class/video4linux/v4l-subdev16
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 /sys/class/video4linux/v4l-subdev16 -> ../../devices/platform/soc/6600800.vind/video4linux/v4l-subdev16
+sunxi_scaler.3
+81:20
+### /sys/class/video4linux/v4l-subdev2
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 /sys/class/video4linux/v4l-subdev2 -> ../../devices/platform/soc/6600800.vind/video4linux/v4l-subdev2
+vin_cap.0
+81:6
+### /sys/class/video4linux/v4l-subdev3
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 /sys/class/video4linux/v4l-subdev3 -> ../../devices/platform/soc/6600800.vind/video4linux/v4l-subdev3
+vin_cap.1
+81:7
+### /sys/class/video4linux/v4l-subdev4
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 /sys/class/video4linux/v4l-subdev4 -> ../../devices/platform/soc/6600800.vind/video4linux/v4l-subdev4
+vin_cap.2
+81:8
+### /sys/class/video4linux/v4l-subdev5
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 /sys/class/video4linux/v4l-subdev5 -> ../../devices/platform/soc/6600800.vind/video4linux/v4l-subdev5
+vin_cap.3
+81:9
+### /sys/class/video4linux/v4l-subdev6
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 /sys/class/video4linux/v4l-subdev6 -> ../../devices/platform/soc/6600800.vind/video4linux/v4l-subdev6
+sunxi_csi.0
+81:10
+### /sys/class/video4linux/v4l-subdev7
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 /sys/class/video4linux/v4l-subdev7 -> ../../devices/platform/soc/6600800.vind/video4linux/v4l-subdev7
+sunxi_csi.1
+81:11
+### /sys/class/video4linux/v4l-subdev8
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 /sys/class/video4linux/v4l-subdev8 -> ../../devices/platform/soc/6600800.vind/video4linux/v4l-subdev8
+sunxi_mipi.0
+81:12
+### /sys/class/video4linux/v4l-subdev9
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 /sys/class/video4linux/v4l-subdev9 -> ../../devices/platform/soc/6600800.vind/video4linux/v4l-subdev9
+sunxi_isp.0
+81:13
+### /sys/class/video4linux/video0
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 /sys/class/video4linux/video0 -> ../../devices/platform/soc/6600800.vind/video4linux/video0
+vin_video0
+81:0
+### /sys/class/video4linux/video1
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 /sys/class/video4linux/video1 -> ../../devices/platform/soc/6600800.vind/video4linux/video1
+vin_video1
+81:1
+### /sys/class/video4linux/video2
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 /sys/class/video4linux/video2 -> ../../devices/platform/soc/6600800.vind/video4linux/video2
+vin_video2
+81:2
+### /sys/class/video4linux/video3
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 /sys/class/video4linux/video3 -> ../../devices/platform/soc/6600800.vind/video4linux/video3
+vin_video3
+81:3
+__OC_END_video_media_devs__
+
+echo __OC_SECTION_hardware_dev_nodes__; ls -l /dev/i2c* /dev/spi* /de
+v/gpio* /dev/pwm* /dev/input* /dev/fb* /dev/disp* /dev/cedar* /dev/ion* /dev/mem
+ /dev/watchdog* /dev/ttyS* 2>/dev/null; echo __OC_END_hardware_dev_nodes__
+__OC_SECTION_hardware_dev_nodes__
+crw-rw----    1 root     root       89,   0 Jan  1 00:00 /dev/i2c-0
+crw-rw----    1 root     root       89,   1 Jan  1 00:00 /dev/i2c-1
+crw-rw----    1 root     root       89,   2 Jan  1 00:00 /dev/i2c-2
+crw-rw----    1 root     root       89,   4 Jan  1 00:00 /dev/i2c-4
+crw-rw----    1 root     root      153,   0 Jan  1 00:00 /dev/spidev1.0
+__OC_END_hardware_dev_nodes__
+
+echo __OC_SECTION_sysfs_buses_classes__; for d in /sys/class/i2c-dev 
+/sys/class/gpio /sys/class/pwm /sys/class/regulator /sys/class/leds /sys/class/i
+nput /sys/class/udc /sys/class/net /sys/bus/i2c/devices /sys/bus/spi/devices /sy
+s/bus/platform/devices; do [ -e "$d" ] && { echo "### $d"; ls -l "$d"; }; done; 
+echo __OC_END_sysfs_buses_classes__
+__OC_SECTION_sysfs_buses_classes__
+### /sys/class/i2c-dev
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 i2c-0 -> ../../devices/platform/soc/twi0/i2c-0/i2c-dev/i2c-0
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 i2c-1 -> ../../devices/platform/soc/twi1/i2c-1/i2c-dev/i2c-1
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 i2c-2 -> ../../devices/platform/soc/twi2/i2c-2/i2c-dev/i2c-2
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 i2c-4 -> ../../devices/platform/soc/twi4/i2c-4/i2c-dev/i2c-4
+### /sys/class/gpio
+--w-------    1 root     root          4096 Jan  1 00:00 export
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 gpio105 -> ../../devices/platform/soc/pio/gpiochip1/gpio/gpio105
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 gpiochip0 -> ../../devices/platform/soc/pio/gpio/gpiochip0
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 gpiochip352 -> ../../devices/platform/soc/r_pio/gpio/gpiochip352
+--w-------    1 root     root          4096 Jan  1 00:00 unexport
+### /sys/class/pwm
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 pwmchip0 -> ../../devices/platform/soc/300a000.pwm/pwm/pwmchip0
+### /sys/class/regulator
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 regulator.0 -> ../../devices/platform/reg-dummy/regulator/regulator.0
+### /sys/class/input
+echo __OC_SECTION_usb_gadget__; find /sys/kernel/config/usb_gadget -maxdepth 5 -print 2>/dev/null; for f in /sys/kernel/config/usb_gadget/g1/idVendor /sys/kernel/config/usb_gadget/g1/idProduct /sys/kernel/config/usb_gadget/g1/strings/0x409/* /sys/kernel/config/usb_gadget/g1/UDC; do [ -e "$f" ] && { echo "$f=$(cat "$f" 2>/dev/null)"; }; done; echo __OC_END_usb_gadget__
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 event0 -> ../../devices/virtual/input/input0/event0
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 input0 -> ../../devices/virtual/input/input0
+### /sys/class/udc
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 5100000.udc-controller -> ../../devices/platform/soc/5100000.udc-controller/udc/5100000.udc-controller
+### /sys/class/net
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 eth0 -> ../../devices/platform/soc/5020000.eth/net/eth0
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 lo -> ../../devices/virtual/net/lo
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 usb0 -> ../../devices/platform/soc/5100000.udc-controller/gadget/net/usb0
+### /sys/bus/i2c/devices
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 0-001e -> ../../../devices/platform/soc/twi0/i2c-0/0-001e
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 1-007f -> ../../../devices/platform/soc/twi1/i2c-1/1-007f
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 2-005d -> ../../../devices/platform/soc/twi2/i2c-2/2-005d
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 4-0051 -> ../../../devices/platform/soc/twi4/i2c-4/4-0051
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 i2c-0 -> ../../../devices/platform/soc/twi0/i2c-0
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 i2c-1 -> ../../../devices/platform/soc/twi1/i2c-1
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 i2c-2 -> ../../../devices/platform/soc/twi2/i2c-2
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 i2c-4 -> ../../../devices/platform/soc/twi4/i2c-4
+### /sys/bus/spi/devices
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 spi1.0 -> ../../../devices/platform/soc/spi1/spi_master/spi1/spi1.0
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 spi1.1 -> ../../../devices/platform/soc/spi1/spi_master/spi1/spi1.1
+### /sys/bus/platform/devices
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 0.n_brom -> ../../../devices/platform/0.n_brom
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 0.s_brom -> ../../../devices/platform/0.s_brom
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 10000.sram_a1 -> ../../../devices/platform/10000.sram_a1
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 1000000.disp -> ../../../devices/platform/soc/1000000.disp
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 1000000.tr -> ../../../devices/platform/soc/1000000.tr
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 1480000.g2d -> ../../../devices/platform/soc/1480000.g2d
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 1c0e000.ve -> ../../../devices/platform/soc/1c0e000.ve
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 1c10000.ise -> ../../../devices/platform/soc/1c10000.ise
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 1c62000.dramfreq -> ../../../devices/platform/1c62000.dramfreq
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 1f00c00.nmi -> ../../../devices/platform/soc/1f00c00.nmi
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 1f01400.prcm -> ../../../devices/platform/1f01400.prcm
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 1f01c00.cpuscfg -> ../../../devices/platform/1f01c00.cpuscfg
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 2100000.isp -> ../../../devices/platform/soc/6600800.vind/2100000.isp
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 2104000.scaler -> ../../../devices/platform/soc/6600800.vind/2104000.scaler
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 2104400.scaler -> ../../../devices/platform/soc/6600800.vind/2104400.scaler
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 2104800.scaler -> ../../../devices/platform/soc/6600800.vind/2104800.scaler
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 2104c00.scaler -> ../../../devices/platform/soc/6600800.vind/2104c00.scaler
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 2300000.eise -> ../../../devices/platform/soc/2300000.eise
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 2400000.nna -> ../../../devices/platform/soc/2400000.nna
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 3002000.dma-controller -> ../../../devices/platform/soc/3002000.dma-controller
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 30090a0.watchdog -> ../../../devices/platform/soc/30090a0.watchdog
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 300a000.pwm -> ../../../devices/platform/soc/300a000.pwm
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 30f0000.iommu -> ../../../devices/platform/30f0000.iommu
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 40000.sram_a2 -> ../../../devices/platform/40000.sram_a2
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 4002000.mbus-controller -> ../../../devices/platform/4002000.mbus-controller
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 48106000.ramoops -> ../../../devices/platform/48106000.ramoops
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 5020000.eth -> ../../../devices/platform/soc/5020000.eth
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 5070000.gpadc -> ../../../devices/platform/soc/5070000.gpadc
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 5070400.thermal_sensor -> ../../../devices/platform/soc/5070400.thermal_sensor
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 5100000.udc-controller -> ../../../devices/platform/soc/5100000.udc-controller
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 5101000.ehci0-controller -> ../../../devices/platform/soc/5101000.ehci0-controller
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 5101000.ohci0-controller -> ../../../devices/platform/soc/5101000.ohci0-controller
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 6600800.vind -> ../../../devices/platform/soc/6600800.vind
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 6600800.vind:isp@1 -> ../../../devices/platform/soc/6600800.vind/6600800.vind:isp@1
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 660c000.mipi -> ../../../devices/platform/soc/6600800.vind/660c000.mipi
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 9010000.cpucfg -> ../../../devices/platform/9010000.cpucfg
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 Fixed MDIO bus.0 -> ../../../devices/platform/Fixed MDIO bus.0
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 ac200 -> ../../../devices/platform/ac200
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 alarmtimer -> ../../../devices/platform/alarmtimer
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 ce -> ../../../devices/platform/soc/ce
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 chipid -> ../../../devices/platform/chipid
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 cma -> ../../../devices/platform/ion/cma
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 codec -> ../../../devices/platform/soc/codec
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 cpu_budget_cooling -> ../../../devices/platform/soc/cpu_budget_cooling
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 csi0 -> ../../../devices/platform/soc/6600800.vind/csi0
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 csi1 -> ../../../devices/platform/soc/6600800.vind/csi1
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 dram -> ../../../devices/platform/dram
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 ion -> ../../../devices/platform/ion
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 pio -> ../../../devices/platform/soc/pio
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 pmu -> ../../../devices/platform/pmu
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 psci -> ../../../devices/platform/psci
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 r_pio -> ../../../devices/platform/soc/r_pio
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 reg-dummy -> ../../../devices/platform/reg-dummy
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 regulatory.0 -> ../../../devices/platform/regulatory.0
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 rtc -> ../../../devices/platform/soc/rtc
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 s_owc0 -> ../../../devices/platform/soc/s_owc0
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 sdc0 -> ../../../devices/platform/soc/sdc0
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 sdc1 -> ../../../devices/platform/soc/sdc1
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 sdc2 -> ../../../devices/platform/soc/sdc2
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 sensor0 -> ../../../devices/platform/soc/6600800.vind/sensor0
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 sensor1 -> ../../../devices/platform/soc/6600800.vind/sensor1
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 sid -> ../../../devices/platform/sid
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 snd-soc-dummy -> ../../../devices/platform/snd-soc-dummy
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 sndcodec -> ../../../devices/platform/soc/sndcodec
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 soc -> ../../../devices/platform/soc
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 soc@03000000:boot_disp -> ../../../devices/platform/soc/soc@03000000:boot_disp
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 soc@03000000:lcd0@01c0c000 -> ../../../devices/platform/soc/soc@03000000:lcd0@01c0c000
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 soc@03000000:pwm0@0300a000 -> ../../../devices/platform/soc/soc@03000000:pwm0@0300a000
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 soc@03000000:pwm1@0300a000 -> ../../../devices/platform/soc/soc@03000000:pwm1@0300a000
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 soc@03000000:pwm2@0300a000 -> ../../../devices/platform/soc/soc@03000000:pwm2@0300a000
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 soc@03000000:pwm3@0300a000 -> ../../../devices/platform/soc/soc@03000000:pwm3@0300a000
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 soc@03000000:pwm4@0300a000 -> ../../../devices/platform/soc/soc@03000000:pwm4@0300a000
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 soc@03000000:pwm5@0300a000 -> ../../../devices/platform/soc/soc@03000000:pwm5@0300a000
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 soc@03000000:pwm6@0300a000 -> ../../../devices/platform/soc/soc@03000000:pwm6@0300a000
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 soc@03000000:pwm7@0300a000 -> ../../../devices/platform/soc/soc@03000000:pwm7@0300a000
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 soc@03000000:pwm8@0300a000 -> ../../../devices/platform/soc/soc@03000000:pwm8@0300a000
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 soc@03000000:pwm9@0300a000 -> ../../../devices/platform/soc/soc@03000000:pwm9@0300a000
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 soc_timer -> ../../../devices/platform/soc/soc_timer
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 spi1 -> ../../../devices/platform/soc/spi1
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 sram_ctrl -> ../../../devices/platform/sram_ctrl
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 sunxi_cpuidle.0 -> ../../../devices/platform/sunxi_cpuidle.0
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 sys_contig -> ../../../devices/platform/ion/sys_contig
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 sys_user -> ../../../devices/platform/ion/sys_user
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 timer -> ../../../devices/platform/timer
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 twi0 -> ../../../devices/platform/soc/twi0
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 twi1 -> ../../../devices/platform/soc/twi1
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 twi2 -> ../../../devices/platform/soc/twi2
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 twi4 -> ../../../devices/platform/soc/twi4
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 uart0 -> ../../../devices/platform/soc/uart0
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 uart2 -> ../../../devices/platform/soc/uart2
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 uart3 -> ../../../devices/platform/soc/uart3
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 usbc0 -> ../../../devices/platform/soc/usbc0
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 vinc0 -> ../../../devices/platform/soc/6600800.vind/vinc0
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 vinc1 -> ../../../devices/platform/soc/6600800.vind/vinc1
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 vinc2 -> ../../../devices/platform/soc/6600800.vind/vinc2
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 vinc3 -> ../../../devices/platform/soc/6600800.vind/vinc3
+lrwxrwxrwx    1 root     root             0 Jan  1 00:00 wlan -> ../../../devices/platform/wlan
+__OC_END_sysfs_buses_classes__
+
+echo __OC_SECTION_usb_gadget__; find /sys/kernel/config/usb_gadget -m
+axdepth 5 -print 2>/dev/null; for f in /sys/kernel/config/usb_gadget/g1/idVendor
+ /sys/kernel/config/usb_gadget/g1/idProduct /sys/kernel/config/usb_gadget/g1/str
+ings/0x409/* /sys/kernel/config/usb_gadget/g1/UDC; do [ -e "$f" ] && { echo "$f=
+$(cat "$f" 2>/dev/null)"; }; done; echo __OC_END_usb_gadget__
+__OC_SECTION_usb_gadget__
+__OC_END_usb_gadget__
+
+echo __OC_SECTION_network__; ifconfig -a 2>/dev/null; ip addr 2>/dev/
+null; ip route 2>/dev/null; netstat -lntup 2>/dev/null; echo __OC_END_network__
+__OC_SECTION_network__
+eth0      Link encap:Ethernet  HWaddr CC:74:9F:D7:15:61  
+          BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+          Interrupt:73 
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:288 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:288 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1 
+          RX bytes:22608 (22.0 KiB)  TX bytes:22608 (22.0 KiB)
+
+usb0      Link encap:Ethernet  HWaddr 36:D2:7A:C9:30:1B  
+          inet addr:192.168.233.1  Bcast:192.168.233.255  Mask:255.255.255.0
+          inet6 addr: fe80::34d2:7aff:fec9:301b/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:346 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:630 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:25848 (25.2 KiB)  TX bytes:101902 (99.5 KiB)
+
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN qlen 1
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN qlen 1000
+    link/ether cc:74:9f:d7:15:61 brd ff:ff:ff:ff:ff:ff
+3: usb0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP qlen 1000
+    link/ether 36:d2:7a:c9:30:1b brd ff:ff:ff:ff:ff:ff
+    inet 192.168.233.1/24 brd 192.168.233.255 scope global usb0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::34d2:7aff:fec9:301b/64 scope link 
+       valid_lft forever preferred_lft forever
+192.168.233.0/24 dev usb0 scope link  src 192.168.233.1 
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      1374/testisp
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1344/dropbear
+tcp        0      0 :::22                   :::*                    LISTEN      1344/dropbear
+udp        0      0 0.0.0.0:67              0.0.0.0:*                           753/udhcpd
+udp        0      0 0.0.0.0:35319           0.0.0.0:*                           1335/ntpd
+__OC_END_network__
+
+echo __OC_SECTION_processes__; ps w 2>/dev/null || ps 2>/dev/null; ec
+ho __OC_END_processes__
+__OC_SECTION_processes__
+  PID USER       VSZ STAT COMMAND
+    1 root      1032 S    /sbin/init
+    2 root         0 SW   [kthreadd]
+    3 root         0 SW   [ksoftirqd/0]
+    4 root         0 SW   [kworker/0:0]
+    5 root         0 SW<  [kworker/0:0H]
+    6 root         0 SW   [kworker/u2:0]
+    7 root         0 SW   [rcu_preempt]
+    8 root         0 SW   [rcu_sched]
+    9 root         0 SW   [rcu_bh]
+   10 root         0 SW<  [lru-add-drain]
+   11 root         0 SW   [kdevtmpfs]
+   12 root         0 SW   [kworker/u2:1]
+  275 root         0 SW   [oom_reaper]
+  276 root         0 SW<  [writeback]
+  278 root         0 SW   [kcompactd0]
+  279 root         0 SW<  [crypto]
+  280 root         0 SW<  [bioset]
+  282 root         0 SW<  [kblockd]
+  338 root         0 SW   [sys_user]
+  346 root         0 SW   [kworker/0:1]
+  347 root         0 SW<  [cfg80211]
+  353 root         0 SW<  [watchdogd]
+  437 root         0 SW<  [spi1]
+  448 root         0 SW   [kswapd0]
+  529 root         0 SW   [vsync proc 0]
+  544 root         0 SW   [kworker/0:2]
+  630 root         0 SW   [irq/307-sunxi-m]
+  632 root         0 SW   [irq/308-sunxi-m]
+  634 root         0 SW   [kworker/0:3]
+  636 root         0 SW<  [bioset]
+  637 root         0 SW   [mmcqd/0]
+  646 root         0 SW   [irq/309-sunxi-m]
+  716 root         0 SW<  [ipv6_addrconf]
+  726 root         0 SW<  [kworker/0:1H]
+  727 root         0 SW   [jbd2/mmcblk0p5-]
+  728 root         0 SW<  [ext4-rsv-conver]
+  753 root      1036 S    udhcpd -f /etc/udhcpd.conf
+  760 root         0 SW   [jbd2/mmcblk0p2-]
+  761 root         0 SW<  [ext4-rsv-conver]
+  766 root         0 SW   [jbd2/mmcblk0p6-]
+  767 root         0 SW<  [ext4-rsv-conver]
+  834 root       832 S<   /sbin/udevd -d
+ 1335 root      1032 S<   /usr/sbin/ntpd -N -p ntp5.aliyun.com -p 0.openwrt.pool.ntp.org
+ 1344 root       812 S    /usr/sbin/dropbear -p 22
+ 1363 root      1036 S    {keep_app.sh} /bin/sh ./keep_app.sh
+ 1365 root      1032 S    -/bin/sh
+ 1374 root     18368 S    /root/maix_dist/testisp
+ 1437 root         0 SW   [kworker/u2:2]
+ 1742 root      1032 S    sleep 4
+ 1743 root       880 R    /usr/sbin/dropbear -p 22
+ 1744 root      1040 S    -ash
+ 1998 root      1032 R    ps w
+__OC_END_processes__
+
+echo __OC_SECTION_app_files__; ls -la /root/maix_dist 2>/dev/null; ld
+d /root/maix_dist/testisp 2>/dev/null; strings /root/maix_dist/testisp 2>/dev/nu
+ll | grep -E "(/dev/|/sys/|video|i2c|spi|gpio|pwm|sensor|mipi|vin|gc2145|opn|ioc
+tl|V4L|HTTP|calib|getdeep|set_cfg|watchdog)" | head -300; echo __OC_END_app_file
+s__
+__OC_SECTION_app_files__
+drwxr-xr-x    4 root     root          1024 Jan  1 00:00 .
+drwxr-xr-x    6 root     root          1024 Jan  1  1970 ..
+drwxr-xr-x    2 root     root          1024 Jan  1  1970 .ipynb_checkpoints
+-rwxrwxrwx    1 root     root         80141 Jan  1  1970 ArcballControls.js
+lrwxrwxrwx    1 root     root            21 Jan  1 00:00 CameraParms.json -> /tmp/CameraParms.json
+-rwxrwxrwx    1 root     root         11448 Jan  1  1970 Lut.js
+-rwxrwxrwx    1 root     root         25631 Jan  1  1970 OrbitControls.js
+-rwxrwxrwx    1 root     root          9746 Jan  1  1970 calVolumes.py
+-rwxrwxrwx    1 root     root        295081 Jan  1  1970 calibration.js
+-rwxrwxrwx    1 root     root       5738806 Jan  1  1970 calibration.wasm
+-rwxrwxrwx    1 root     root         16958 Jan  1  1970 favicon.ico
+-rwxrwxrwx    1 root     root       1048576 Jan  1  1970 flashdump.bin
+-rwxrwxrwx    1 root     root         22919 Jan  1  1970 json_decode
+-rwxrwxrwx    1 root     root          1968 Jan  1  1970 keep_app.sh
+drwxrwxrwx    2 root     root          1024 Jan  1  1970 lib
+-rwxrwxrwx    1 root     root         29051 Jan  1  1970 lil-gui.module.min.js
+-rwxrwxrwx    1 root     root           212 Jan  1  1970 start_app.sh
+-rwxrwxrwx    1 root     root          3664 Jan  1  1970 stats.module.js
+-rwxrwxrwx    1 root     root          4994 Jan  1  1970 stream.py
+-rwxrwxrwx    1 root     root        321519 Jan  1  1970 testisp
+-rwxrwxrwx    1 root     root          1554 Jan  1 00:00 testisp.log
+-rwxrwxrwx    1 root     root       1179920 Jan  1  1970 three.module.js
+-rwxrwxrwx    1 root     root         11673 Jan  1  1970 tutorial.ipynb
+-rwxrwxrwx    1 root     root         24353 Jan  1  1970 view16b.html
+-rwxrwxrwx    1 root     root         24520 Jan  1  1970 viewdeep.html
+	/lib/ld-musl-armhf.so.1 (0xb6f0a000)
+	libvenc_codec.so => /usr/lib/eyesee-mpp/libvenc_codec.so (0xb6ec5000)
+	libvenc_base.so => /usr/lib/eyesee-mpp/libvenc_base.so (0xb6eb0000)
+	libvencoder.so => /usr/lib/eyesee-mpp/libvencoder.so (0xb6e9b000)
+	libvdecoder.so => /usr/lib/eyesee-mpp/libvdecoder.so (0xb6e79000)
+	libvideoengine.so => /usr/lib/eyesee-mpp/libvideoengine.so (0xb6e64000)
+	libVE.so => /usr/lib/eyesee-mpp/libVE.so (0xb6e4e000)
+	libMemAdapter.so => /usr/lib/eyesee-mpp/libMemAdapter.so (0xb6e3a000)
+	libcdc_base.so => /usr/lib/eyesee-mpp/libcdc_base.so (0xb6e26000)
+	libion.so => /usr/lib/eyesee-mpp/libion.so (0xb6e12000)
+	liblog.so => /usr/lib/eyesee-mpp/liblog.so (0xb6dfe000)
+	libglog.so.0.3.5 => /usr/lib/libglog.so.0.3.5 (0xb6dcb000)
+	libstdc++.so.6 => /lib/libstdc++.so.6 (0xb6cca000)
+	libgcc_s.so.1 => /lib/libgcc_s.so.1 (0xb6cb0000)
+	libc.so => /lib/ld-musl-armhf.so.1 (0xb6f0a000)
+echo __OC_SECTION_dmesg_key__; dmesg 2>/dev/null | grep -Ei "sunxi|allwinner|tina|v85|v83|vin|mipi|csi|isp|gc2145|opn|sensor|i2c|spi|pwm|gpio|video|v4l|media|usb|gadget|rndis|watchdog|mmc|mtd|ubi|dram|ion|cedar|disp|camera"; echo __OC_END_dmesg_key__
+-ash: head: not found
+__OC_END_app_files__
+
+echo __OC_SECTION_dmesg_key__; dmesg 2>/dev/null | grep -Ei "sunxi|al
+lwinner|tina|v85|v83|vin|mipi|csi|isp|gc2145|opn|sensor|i2c|spi|pwm|gpio|video|v
+4l|media|usb|gadget|rndis|watchdog|mmc|mtd|ubi|dram|ion|cedar|disp|camera"; echo
+ __OC_END_dmesg_key__
+__OC_SECTION_dmesg_key__
+[    0.000000] Linux version 4.9.118 (work@work-virtual-machine) (gcc version 6.4.1 (OpenWrt/Linaro GCC 6.4-2017.11 2017-11) ) #3410 PREEMPT Mon Jan 9 01:34:54 UTC 2023
+[    0.000000] CPU: ARMv7 Processor [410fc075] revision 5 (ARMv7), cr=50c5387d
+[    0.000000] CPU: div instructions available: patching division code
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] ion_mem_reserve: err format for ion reserve list!
+[    0.000000] disp reserve base 0x46400000 ,size 0x4b200
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: SMC Calling Convention v1.0
+[    0.000000] Kernel command line: earlyprintk=sunxi-uart,0x05000000 initcall_debug=0 console=ttyS0,115200 loglevel=0 root=/dev/mmcblk0p5 rootwait init=/pseudo_init rdinit=/rdinit partitions=bootlogo@mmcblk0p1:cfg@mmcblk0p2:env@mmcblk0p3:boot@mmcblk0p4:rootfs@mmcblk0p5:UDISK@mmcblk0p6 cma=16M mac_addr= wifi_mac= bt_mac= selinux= specialstr= coherent_pool=16K ion_carveout_list= rootfstype=ext4 androidboot.mode=normal androidboot.hardware=sun8iw19p1 boot_type=2 androidboot.boot_type=2 gpt=1 uboot_message=2018.05(05/31/2021-20:25:24) mbr_offset=1032192 disp_reserve=307712,0x46400000 bootreason=unknow
+[    0.000000] Preemptible hierarchical RCU implementation.
+[    0.000004] sched_clock: 56 bits at 24MHz, resolution 41ns, wraps every 4398046511097ns
+[    0.000010] Switching to timer-based delay loop, resolution 41ns
+[    0.019294] DMA: preallocated 16 KiB pool for atomic coherent allocations
+[    0.020961] sunxi iommu: irq = 23
+[    0.024427] sun8iw19p1-r-pinctrl r_pio: initialized sunXi PIO driver
+[    0.033390] sun8iw19p1-pinctrl pio: initialized sunXi PIO driver
+[    0.041108] iommu: Adding device 1000000.disp to group 0
+[    0.045054] iommu: Adding device csi0 to group 0
+[    0.045566] iommu: Adding device csi1 to group 0
+[    0.046379] iommu: Adding device 2100000.isp to group 0
+[    0.047910] iommu: Adding device vinc0 to group 0
+[    0.048232] iommu: Adding device vinc1 to group 0
+[    0.048557] iommu: Adding device vinc2 to group 0
+[    0.048869] iommu: Adding device vinc3 to group 0
+[    0.072181] pwm module init!
+[    0.074507] SCSI subsystem initialized
+[    0.074744] usbcore: registered new interface driver usbfs
+[    0.074794] usbcore: registered new interface driver hub
+[    0.075454] usbcore: registered new device driver usb
+[    0.075614] sunxi_i2c_adap_init()2551 - init
+[    0.075946] sunxi_i2c_probe()2288 - [i2c0] twi_drv_used = 0
+[    0.075953] sunxi_i2c_probe()2292 - [i2c0] twi_pkt_interval = 0
+[    0.076022] twi_request_gpio()455 - [i2c0] init name: twi0
+[    0.076481] sunxi_i2c_probe()2288 - [i2c1] twi_drv_used = 0
+[    0.076488] sunxi_i2c_probe()2292 - [i2c1] twi_pkt_interval = 0
+[    0.076537] twi_request_gpio()455 - [i2c1] init name: twi1
+[    0.076973] sunxi_i2c_probe()2288 - [i2c2] twi_drv_used = 0
+[    0.076979] sunxi_i2c_probe()2292 - [i2c2] twi_pkt_interval = 0
+[    0.077031] twi_request_gpio()455 - [i2c2] init name: twi2
+[    0.078781] sunxi_i2c_probe()2288 - [i2c4] twi_drv_used = 0
+[    0.078786] sunxi_i2c_probe()2292 - [i2c4] twi_pkt_interval = 0
+[    0.078854] twi_request_gpio()455 - [i2c4] init name: twi4
+[    0.079556] media: Linux media interface: v0.10
+[    0.079646] Linux video capture interface: v2.00
+[    0.080973] ion_parse_dt_heap_common: id 0 type 0 name sys_user align 1000
+[    0.081123] ion_parse_dt_heap_common: id 1 type 1 name sys_contig align 1000
+[    0.081238] ion_parse_dt_heap_common: id 4 type 4 name cma align 1000
+[    0.083755] G2D: rcq version initialized.major:251
+[    0.098331] sunxi_spi_probe()2322 - [spi1] SPI MASTER MODE
+[    0.098382] spi1 supply spi not found, using dummy regulator
+[    0.098443] sunxi_spi_request_gpio()1948 - [spi1] Pinctrl init spi1
+[    0.098520] sunxi_spi_clk_init()1998 - [spi1] mclk 200000000
+[    0.098942] spi spi1: master is unqueued, this is deprecated
+[    0.099372] sunxi_spi_probe()2403 - [spi1]: driver probe succeed, base c8830000, irq 306
+[    0.110387] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.110638] jffs2: version 2.2. (NAND) © 2001-2006 Red Hat, Inc.
+[    0.112711] [DISP]disp_module_init
+[    0.131120] [DISP] disp_fb_to_var,line:498:
+[    0.152310] [DISP] disp_sys_pwm_config,line:618:
+[    0.152316] disp_sys_pwm_Config, handle is NULL!
+[    0.152320] [DISP] disp_sys_pwm_set_polarity,line:636:
+[    0.152322] disp_sys_pwm_Set_Polarity, handle is NULL!
+[    0.152743] [DISP]disp_module_init finish
+[    0.154118] uart0: ttyS0 at MMIO 0x5000000 (irq = 294, base_baud = 1500000) is a SUNXI
+[    0.155442] uart2: ttyS2 at MMIO 0x5000800 (irq = 295, base_baud = 1500000) is a SUNXI
+[    0.155830] sun8iw19p1-pinctrl pio: pin PH0 already requested by spi1; cannot claim for uart3
+[    0.156902] sunxi-wlan wlan: wlan_busnum (1)
+[    0.156910] sunxi-wlan wlan: wlan_power_num (-1)
+[    0.156916] sunxi-wlan wlan: Missing wlan_io_regulator.
+[    0.156920] sunxi-wlan wlan: io_regulator_name ((null))
+[    0.156927] sunxi-wlan wlan: request pincrtl handle for device [wlan] failed
+[    0.156961] sunxi-wlan wlan: wlan_regon gpio=141  mul-sel=1  pull=0  drv_level=1  data=0
+[    0.156984] sunxi-wlan wlan: get gpio chip_en failed
+[    0.156989] sunxi-wlan wlan: get gpio wlan_hostwake failed
+[    0.156995] sunxi-wlan wlan: clk_name ()
+[    0.157779] spidev spi1.0: buggy DT: spidev listed directly in DT
+[    0.157966] spidev spi1.1: buggy DT: spidev listed directly in DT
+[    0.160424] PPP generic driver version 2.4.2
+[    0.160773] PPP BSD Compression module registered
+[    0.160779] PPP Deflate Compression module registered
+[    0.160885] usbcore: registered new interface driver cdc_ether
+[    0.160894] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driverecho __OC_SECTION_dmesg_full__; dmesg 2>/dev/null; echo __OC_END_dmesg_full__
+
+[    0.161188] sunxi ehci0-controller don't init wakeup source
+[    0.161197] [sunxi-ehci0]: probe, pdev->name: 5101000.ehci0-controller, sunxi_ehci: 0xc04a8d70, 0x:c88e5000, irq_no:12f
+[    0.161241] sunxi-ehci 5101000.ehci0-controller: SW USB2.0 'Enhanced' Host Controller (EHCI) Driver
+[    0.161270] sunxi-ehci 5101000.ehci0-controller: new USB bus registered, assigned bus number 1
+[    0.161465] sunxi-ehci 5101000.ehci0-controller: irq 303, io mem 0xc6ae4400
+[    0.184793] sunxi-ehci 5101000.ehci0-controller: USB 0.0 started, EHCI 1.00
+[    0.185463] hub 1-0:1.0: USB hub found
+[    0.185671] [ehci0-controller]: sunxi_usb_disable_ehci
+[    0.185677] [sunxi-ehci0]: remove, pdev->name: 5101000.ehci0-controller, sunxi_ehci: 0xc04a8d70
+[    0.185690] sunxi-ehci 5101000.ehci0-controller: remove, state 1
+[    0.185700] usb usb1: USB disconnect, device number 1
+[    0.186519] sunxi-ehci 5101000.ehci0-controller: USB bus 1 deregistered
+[    0.187140] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    0.187431] sunxi ohci0-controller don't init wakeup source
+[    0.187481] [sunxi-ohci0]: probe, pdev->name: 5101000.ohci0-controller, sunxi_ohci: 0xc04a8520
+[    0.187522] sunxi-ohci 5101000.ohci0-controller: SW USB2.0 'Open' Host Controller (OHCI) Driver
+[    0.187547] sunxi-ohci 5101000.ohci0-controller: new USB bus registered, assigned bus number 1
+[    0.187585] sunxi-ohci 5101000.ohci0-controller: irq 304, io mem 0xc6ae4c00
+[    0.254659] 1000000.disp supply dldo1 not found, using dummy regulator
+[    0.259406] hub 1-0:1.0: USB hub found
+[    0.259600] [ohci0-controller]: sunxi_usb_disable_ohci
+[    0.259605] [sunxi-ohci0]: remove, pdev->name: 5101000.ohci0-controller, sunxi_ohci: 0xc04a8520
+[    0.259611] sunxi-ohci 5101000.ohci0-controller: remove, state 1
+[    0.259623] usb usb1: USB disconnect, device number 1
+[    0.260051] sunxi-ohci 5101000.ohci0-controller: USB bus 1 deregistered
+[    0.260721] usbcore: registered new interface driver uas
+[    0.260820] usbcore: registered new interface driver usb-storage
+[    0.260885] usbcore: registered new interface driver ums-alauda
+[    0.260950] usbcore: registered new interface driver ums-cypress
+[    0.261016] usbcore: registered new interface driver ums-datafab
+[    0.261076] usbcore: registered new interface driver ums_eneub6250
+[    0.261139] usbcore: registered new interface driver ums-freecom
+[    0.261201] usbcore: registered new interface driver ums-isd200
+[    0.261266] usbcore: registered new interface driver ums-jumpshot
+[    0.261334] usbcore: registered new interface driver ums-karma
+[    0.261405] usbcore: registered new interface driver ums-onetouch
+[    0.261484] usbcore: registered new interface driver ums-realtek
+[    0.261550] usbcore: registered new interface driver ums-sddr09
+[    0.261617] usbcore: registered new interface driver ums-sddr55
+[    0.261684] usbcore: registered new interface driver ums-usbat
+[    0.261839] usbcore: registered new interface driver usbserial
+[    0.261906] usbcore: registered new interface driver usbserial_generic
+[    0.261972] usbserial: USB Serial support registered for generic
+[    0.262038] usbcore: registered new interface driver option
+[    0.262100] usbserial: USB Serial support registered for GSM modem (1-port)
+[    0.262177] usb_serial_number:20080411
+[    0.263009] usb0: HOST MAC 7a:92:85:48:f8:37
+[    0.263114] usb0: MAC 36:d2:7a:c9:30:1b
+[    0.263202] g_ether gadget: Ethernet Gadget, version: Memorial Day 2008
+[    0.263206] g_ether gadget: g_ether ready
+[    0.263460] sunxi_gpadc_init,1831, success
+[    0.263820] sunxi_gpadc_setup: get channel scan data failed
+[    0.264906] input: sunxi-gpadc0 as /devices/virtual/input/input0
+[    0.266116] sunxi-rtc rtc: rtc core: registered sunxi-rtc as rtc0
+[    0.266146] sunxi-rtc rtc: RTC enabled
+[    0.266414] i2c /dev entries driver
+[    0.267008] sunxi cedar version 0.1
+[    0.267179] cedar_ve: cedar-ve the get irq is 291
+[    0.267797] google_vp9: sunxi google vp9 version 0.1
+[    0.268461] sunxi-wdt 30090a0.watchdog: Watchdog enabled (timeout=16 sec, nowayout=0)
+[    0.269838] sunxi-mmc sdc2: SD/MMC/SDIO Host Controller Driver(v3.37 2019-12-4 9:48)
+[    0.269941] sunxi-mmc sdc2: No vmmc regulator found
+[    0.269944] sunxi-mmc sdc2: No vqmmc regulator found
+[    0.269948] sunxi-mmc sdc2: No vdmmc regulator found
+[    0.269952] sunxi-mmc sdc2: No vd33sw regulator found
+[    0.269955] sunxi-mmc sdc2: No vd18sw regulator found
+[    0.269958] sunxi-mmc sdc2: No vq33sw regulator found
+[    0.269962] sunxi-mmc sdc2: No vq18sw regulator found
+[    0.269972] sunxi-mmc sdc2: Cann't get uart0 pinstate,check if needed
+[    0.270940] sunxi-mmc sdc2: set host busy
+[    0.270986] mmc:failed to get gpios
+[    0.271172] sunxi-mmc sdc2: sdc set ios:clk 0Hz bm PP pm UP vdd 21 width 1 timing LEGACY(SDR12) dt B
+[    0.271216] sunxi-mmc sdc2: no vqmmc,Check if there is regulator
+[    0.294655] 1000000.disp supply bldo1 not found, using dummy regulator
+[    0.294746] 1000000.disp supply dcdc1 not found, using dummy regulator
+[    0.294796] 1000000.disp supply aldo3 not found, using dummy regulator
+[    0.295300] sunxi-mmc sdc2: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[    0.324625] sunxi-mmc sdc2: detmode:manually by software
+[    0.324916] sunxi-mmc sdc0: SD/MMC/SDIO Host Controller Driver(v3.37 2019-12-4 9:48)
+[    0.324979] sunxi-mmc sdc0: ***ctl-spec-caps*** 1
+[    0.325011] sunxi-mmc sdc0: No vmmc regulator found
+[    0.325016] sunxi-mmc sdc0: No vqmmc regulator found
+[    0.325019] sunxi-mmc sdc0: No vdmmc regulator found
+[    0.325022] sunxi-mmc sdc0: No vd33sw regulator found
+[    0.325026] sunxi-mmc sdc0: No vd18sw regulator found
+[    0.325029] sunxi-mmc sdc0: No vq33sw regulator found
+[    0.325033] sunxi-mmc sdc0: No vq18sw regulator found
+[    0.325042] sunxi-mmc sdc0: Cann't get uart0 pinstate,check if needed
+[    0.325046] sunxi-mmc sdc0: Cann't get sleep pinstate,check if needed
+[    0.325374] sunxi-mmc sdc0: set host busy
+[    0.325454] sunxi-mmc sdc2: smc 0 p2 err, cmd 52, RTO !!
+[    0.325465] sunxi-mmc sdc0: Got CD GPIO
+[    0.325639] sunxi-mmc sdc0: sdc set ios:clk 0Hz bm PP pm UP vdd 21 width 1 timing LEGACY(SDR12) dt B
+[    0.325661] sunxi-mmc sdc0: no vqmmc,Check if there is regulator
+[    0.326498] sunxi-mmc sdc2: smc 0 p2 err, cmd 52, RTO !!
+[    0.326517] sunxi-mmc sdc2: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[    0.328964] sunxi-mmc sdc2: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[    0.331121] sunxi-mmc sdc2: smc 0 p2 err, cmd 5, RTO !!
+[    0.331934] sunxi-mmc sdc2: smc 0 p2 err, cmd 5, RTO !!
+[    0.332747] sunxi-mmc sdc2: smc 0 p2 err, cmd 5, RTO !!
+[    0.333559] sunxi-mmc sdc2: smc 0 p2 err, cmd 5, RTO !!
+[    0.334168] sunxi-mmc sdc2: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[    0.336584] sunxi-mmc sdc2: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[    0.354639] sunxi-mmc sdc0: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[    0.371488] mmc0: host does not support reading read-only switch, assuming write-enable
+[    0.373191] sunxi-mmc sdc2: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing SD-HS(SDR25) dt B
+[    0.373255] sunxi-mmc sdc2: sdc set ios:clk 50000000Hz bm PP pm ON vdd 21 width 1 timing SD-HS(SDR25) dt B
+[    0.373360] sunxi-mmc sdc2: sdc set ios:clk 50000000Hz bm PP pm ON vdd 21 width 4 timing SD-HS(SDR25) dt B
+[    0.373395] mmc0: new high speed SD card at address 21b3
+[    0.373903] mmcblk0: mmc0:21b3 EASTC 121 MiB 
+[    0.376241]  mmcblk0: p1 p2 p3 p4 p5 p6
+[    0.384666] sunxi-mmc sdc0: detmode:gpio polling
+[    0.385031] sunxi-mmc sdc1: SD/MMC/SDIO Host Controller Driver(v3.37 2019-12-4 9:48)
+[    0.385120] sunxi-mmc sdc1: No vmmc regulator found
+[    0.385125] sunxi-mmc sdc1: No vqmmc regulator found
+[    0.385128] sunxi-mmc sdc1: No vdmmc regulator found
+[    0.385132] sunxi-mmc sdc1: No vd33sw regulator found
+[    0.385135] sunxi-mmc sdc1: No vd18sw regulator found
+[    0.385138] sunxi-mmc sdc1: No vq33sw regulator found
+[    0.385142] sunxi-mmc sdc1: No vq18sw regulator found
+[    0.385163] sunxi-mmc sdc1: Cann't get uart0 pinstate,check if needed
+[    0.385327] sunxi-mmc sdc0: sdc set ios:clk 0Hz bm PP pm OFF vdd 0 width 1 timing LEGACY(SDR12) dt B
+[    0.386563] sunxi-mmc sdc1: set host busy
+[    0.386604] mmc:failed to get gpios
+[    0.386735] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm UP vdd 21 width 1 timing LEGACY(SDR12) dt B
+[    0.386756] sunxi-mmc sdc1: no vqmmc,Check if there is regulator
+[    0.414632] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[    0.444623] sunxi-mmc sdc1: detmode:manually by software
+[    0.446357] sunxi-mmc sdc1: smc 2 p1 err, cmd 52, RTO !!
+[    0.447193] sunxi-mmc sdc1: smc 2 p1 err, cmd 52, RTO !!
+[    0.447212] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[    0.449669] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[    0.451217] usbcore: registered new interface driver usbhid
+[    0.451221] usbhid: USB HID core driver
+[    0.451546] sunxi-mmc sdc1: smc 2 p1 err, cmd 8, RTO !!
+[    0.452369] sunxi-internal-codec codec: [sunxi_internal_codec_probe] codec probe finished.
+[    0.452709] [sunxi_card_init] card init finished.
+[    0.453055] sunxi-codec-machine sndcodec: sun8iw19codec <-> codec mapping ok
+[    0.454205] sunxi-mmc sdc1: smc 2 p1 err, cmd 5, RTO !!
+[    0.455028] sunxi-mmc sdc1: smc 2 p1 err, cmd 5, RTO !!
+[    0.455845] sunxi-mmc sdc1: smc 2 p1 err, cmd 5, RTO !!
+[    0.456659] sunxi-mmc sdc1: smc 2 p1 err, cmd 5, RTO !!
+[    0.457484] sunxi-mmc sdc1: smc 2 p1 err, cmd 55, RTO !!
+[    0.458309] sunxi-mmc sdc1: smc 2 p1 err, cmd 55, RTO !!
+[    0.459122] sunxi-mmc sdc1: smc 2 p1 err, cmd 55, RTO !!
+[    0.459935] sunxi-mmc sdc1: smc 2 p1 err, cmd 55, RTO !!
+[    0.459948] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm OD pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[    0.460833] sunxi-mmc sdc1: smc 2 p1 err, cmd 1, RTO !!
+[    0.460846] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm OFF vdd 0 width 1 timing LEGACY(SDR12) dt B
+[    0.534506] sunxi-codec-machine sndcodec: [sunxi_card_dev_probe] register card finished.
+[    0.537461] Registering SWP/SWPB emulation handler
+[    0.541653] sunxi-rtc rtc: setting system clock to 1970-01-01 00:00:02 UTC (2)
+[    0.544419] EXT4-fs (mmcblk0p5): INFO: recovery required on readonly filesystem
+[    0.544424] EXT4-fs (mmcblk0p5): write access will be enabled during recovery
+[    0.627762] EXT4-fs (mmcblk0p5): recovery complete
+[    0.676019] EXT4-fs (mmcblk0p5): mounted filesystem with ordered data mode. Opts: (null)
+[    0.676860] This architecture does not have kernel memory protection.
+[    0.796943] EXT4-fs (mmcblk0p5): re-mounted. Opts: data=ordered
+[    0.818746] IPv6: ADDRCONF(NETDEV_UP): usb0: link is not ready
+[    0.983482] EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. Opts: (null)
+[    1.084629] [DISP] disp_device_attached_and_enable,line:221:
+[    1.084638] [DISP] disp_device_attached_and_enable,line:224:
+[    1.229584] EXT4-fs (mmcblk0p6): mounted filesystem with ordered data mode. Opts: (null)
+[    1.352065] [sensor_power_err]fetch sensor0_phase from device_tree failed
+[    1.356263] [sensor_power_err]fetch sensor1_phase from device_tree failed
+[    1.411465] [opn87xx_mipi] error, sensor_reg_init enable 1
+[    1.503942] [opn87xx_mipi] error, i2c_write_array i 113
+[    1.503951] [opn87xx_mipi] error, i2c_write_array i 0
+[    1.510890] [gc2145]V4L2_IDENT_SENSOR = 2145
+[    1.711672] udev: starting version 142
+[    2.747263] sunxi-wlan wlan: bus_index: 1
+[    2.747295] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm UP vdd 21 width 1 timing LEGACY(SDR12) dt B
+[    2.747378] sunxi-mmc sdc1: no vqmmc,Check if there is regulator
+[    2.774707] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[    2.805493] sunxi-mmc sdc1: smc 2 p1 err, cmd 52, RTO !!
+[    2.806344] sunxi-mmc sdc1: smc 2 p1 err, cmd 52, RTO !!
+[    2.806379] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[    2.808865] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[    2.810758] sunxi-mmc sdc1: smc 2 p1 err, cmd 8, RTO !!
+[    2.813473] sunxi-mmc sdc1: smc 2 p1 err, cmd 5, RTO !!
+[    2.814318] sunxi-mmc sdc1: smc 2 p1 err, cmd 5, RTO !!
+[    2.815165] sunxi-mmc sdc1: smc 2 p1 err, cmd 5, RTO !!
+[    2.816003] sunxi-mmc sdc1: smc 2 p1 err, cmd 5, RTO !!
+[    2.816848] sunxi-mmc sdc1: smc 2 p1 err, cmd 55, RTO !!
+[    2.817688] sunxi-mmc sdc1: smc 2 p1 err, cmd 55, RTO !!
+[    2.818525] sunxi-mmc sdc1: smc 2 p1 err, cmd 55, RTO !!
+[    2.819365] sunxi-mmc sdc1: smc 2 p1 err, cmd 55, RTO !!
+[    2.819583] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm OD pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[    2.820482] sunxi-mmc sdc1: smc 2 p1 err, cmd 1, RTO !!
+[    2.820510] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm OFF vdd 0 width 1 timing LEGACY(SDR12) dt B
+[    2.982518] sunxi-wlan wlan: bus_index: 1
+[    2.982557] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm UP vdd 21 width 1 timing LEGACY(SDR12) dt B
+[    2.982640] sunxi-mmc sdc1: no vqmmc,Check if there is regulator
+[    3.004683] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[    3.035474] sunxi-mmc sdc1: smc 2 p1 err, cmd 52, RTO !!
+[    3.036297] sunxi-mmc sdc1: smc 2 p1 err, cmd 52, RTO !!
+[    3.036312] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[    3.038782] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[    3.040641] sunxi-mmc sdc1: smc 2 p1 err, cmd 8, RTO !!
+[    3.041456] sunxi-mmc sdc1: smc 2 p1 err, cmd 5, RTO !!
+[    3.042268] sunxi-mmc sdc1: smc 2 p1 err, cmd 5, RTO !!
+[    3.043082] sunxi-mmc sdc1: smc 2 p1 err, cmd 5, RTO !!
+[    3.043902] sunxi-mmc sdc1: smc 2 p1 err, cmd 5, RTO !!
+[    3.044807] sunxi-mmc sdc1: smc 2 p1 err, cmd 55, RTO !!
+[    3.045627] sunxi-mmc sdc1: smc 2 p1 err, cmd 55, RTO !!
+[    3.046442] sunxi-mmc sdc1: smc 2 p1 err, cmd 55, RTO !!
+[    3.047271] sunxi-mmc sdc1: smc 2 p1 err, cmd 55, RTO !!
+[    3.047283] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm OD pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+[    3.048146] sunxi-mmc sdc1: smc 2 p1 err, cmd 1, RTO !!
+[    3.048174] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm OFF vdd 0 width 1 timing LEGACY(SDR12) dt B
+[    3.089435] [opn87xx_mipi] error, sensor_reg_init enable 1
+[    3.183859] [opn87xx_mipi] error, i2c_write_array i 113
+[    3.183864] [opn87xx_mipi] error, i2c_write_array i 0
+[    3.188611] [VIN_ERR]buffer count is invalid, set to 3
+[    3.190478] [opn87xx_mipi] error, sensor_reg_init enable 1
+[    3.283805] [opn87xx_mipi] error, i2c_write_array i 113
+[    3.283809] [opn87xx_mipi] error, i2c_write_array i 0
+[    3.290288] [gc2145]V4L2_IDENT_SENSOR = 2145
+[    3.410432] [VIN_WARN]v4l2 subdev sensor s_parm error!
+[    3.410574] [VIN_ERR]buffer count is invalid, set to 3
+[    3.412762] [gc2145]sensor_s_stream on = 1, 800*600 2008
+[    3.468097] cedar_ve: VE real_fre=300000000
+[    3.468284] cedar_ve: VE real_fre=300000000
+[    5.076793] g_ether gadget: high-speed config #1: CDC Ethernet (ECM)
+[    5.077196] IPv6: ADDRCONF(NETDEV_CHANGE): usb0: link becomes ready
+__OC_END_dmesg_key__

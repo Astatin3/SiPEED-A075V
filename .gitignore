@@ -1,1 +1,27 @@
+# Rust
 /target
+
+# SDK
+tina-V83x/
+
+# Build artifacts
+dropbear-client/
+spl-build/
+
+# Large device dumps
+a075v_full_backup.img
+a075v_device_dump/raw_partitions/
+a075v_device_dump/selected_files/
+
+# SSH keys
+a075v_device_dump/a075v_dump_key
+a075v_device_dump/a075v_dump_key.pub
+a075v_device_dump/a075v_dump_key_1024
+a075v_device_dump/a075v_dump_key_1024.pub
+
+# Old dump tarball
+a075v_device_dump/a075v_selected_files.tar
+
+# OS
+.DS_Store
+Thumbs.db
